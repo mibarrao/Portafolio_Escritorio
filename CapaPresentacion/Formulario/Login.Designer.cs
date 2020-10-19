@@ -1,4 +1,8 @@
-﻿namespace CapaPresentacion.Formulario
+﻿using CapaDatos;
+using CapaEntidades;
+using System.Runtime.CompilerServices;
+
+namespace CapaPresentacion.Formulario
 {
     partial class Login
     {
@@ -115,5 +119,8 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnIngresar;
+
+
+                
     }
 }

@@ -41,6 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidades\eAccidente.cs" />
+    <Compile Include="Entidades\eAgenda.cs" />
+    <Compile Include="Entidades\eCapacitacion.cs" />
+    <Compile Include="Entidades\eCiudad.cs" />
+    <Compile Include="Entidades\eCliente.cs" />
+    <Compile Include="Entidades\eComuna.cs" />
+    <Compile Include="Entidades\eContrato.cs" />
+    <Compile Include="Entidades\ePago.cs" />
+    <Compile Include="Entidades\ePlan.cs" />
+    <Compile Include="Entidades\eProfesional.cs" />
+    <Compile Include="Entidades\eRegion.cs" />
+    <Compile Include="Entidades\eRubro.cs" />
+    <Compile Include="Entidades\eTipoUsuario.cs" />
+    <Compile Include="Entidades\eUsuario.cs" />
+    <Compile Include="Entidades\eVisita.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

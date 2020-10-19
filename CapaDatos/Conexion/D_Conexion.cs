@@ -14,22 +14,39 @@ namespace CapaDatos.Conexion
 {
     public class D_Conexion
     {
-        private OracleConnection conn = new OracleConnection("Data Source= orcl; Password = hr; USER ID= portafolio");
 
+        OracleConnection conn = null;
 
-        public OracleConnection abrirConexion() {
-            if (conn.State == ConnectionState.Closed)
+        public D_Conexion() { }
+
+        public void conectar() { 
+            String connOracleString = ConfigurationManager.ConnectionStrings["ConnectionPortafolio"].ConnectionString;
+            conn = new OracleConnection(connOracleString);
+            try
+            {
                 conn.Open();
-            return conn;
+            }
+            catch (Exception exp) {
+                Console.WriteLine("La conexión no ha podido realizarse: ", exp);
+            }
 
         }
 
-        public OracleConnection cerrarConexion(){
-            if (conn.State == ConnectionState.Open)
-                conn.Close();
-            return conn;
+        public void desconectar() {
+            try
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            catch (Exception exp) { 
+                Console.WriteLine("No se ha podido realizar la desconexión: ",exp);
+            }
         }
 
-    
+
     }
+  
+
 }
