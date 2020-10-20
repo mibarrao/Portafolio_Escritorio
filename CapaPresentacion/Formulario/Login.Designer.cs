@@ -34,8 +34,8 @@ namespace CapaPresentacion.Formulario
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.txtClave = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnIngresar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -61,27 +61,27 @@ namespace CapaPresentacion.Formulario
             this.label2.TabIndex = 1;
             this.label2.Text = "CONTRASEÑA";
             // 
-            // textBox1
+            // txtUsuario
             // 
-            this.textBox1.Location = new System.Drawing.Point(203, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(133, 22);
-            this.textBox1.TabIndex = 2;
+            this.txtUsuario.Location = new System.Drawing.Point(203, 28);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(133, 22);
+            this.txtUsuario.TabIndex = 2;
             // 
-            // textBox2
+            // txtClave
             // 
-            this.textBox2.Location = new System.Drawing.Point(203, 76);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(133, 22);
-            this.textBox2.TabIndex = 3;
+            this.txtClave.Location = new System.Drawing.Point(203, 76);
+            this.txtClave.Name = "txtClave";
+            this.txtClave.Size = new System.Drawing.Size(133, 22);
+            this.txtClave.TabIndex = 3;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnIngresar);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.txtClave);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtUsuario);
             this.panel1.Location = new System.Drawing.Point(109, 223);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(413, 193);
@@ -115,8 +115,8 @@ namespace CapaPresentacion.Formulario
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.TextBox txtClave;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnIngresar;
 

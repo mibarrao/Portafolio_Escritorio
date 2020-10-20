@@ -24,12 +24,33 @@ namespace CapaPresentacion.Formulario
 
         }
 
+        OracleConnection conexion = new OracleConnection("Data Source= orcl; Password = hr; USER ID= portafolio");
+       
         private void btnIngresar_Click(object sender, EventArgs e)
         {
+            conexion.Open();
+            OracleCommand cm = new OracleCommand("select usuario, clave from usuario where usuario = :usuario and clave = :clave", conexion);
+
+            cm.Parameters.AddWithValue(":usuario", txtUsuario.Text);
+            cm.Parameters.AddWithValue(":clave", txtClave.Text);
+
+            OracleDataReader lector = cm.ExecuteReader();
+
+            if (lector.Read())
+                {
+                MessageBox.Show("Te has podido conectar!");
+                conexion.Close();
+            }
+            else
+                {
+                MessageBox.Show("No se ha podido ingresar");
+            }
+
+
             //OracleConnection conexion = new OracleConnection("Data Source= orcl; Password = hr; USER ID= portafolio");
 
             //conexion.Open();
-            
+
             //if (conexion.State == ConnectionState.Open)
             //    MessageBox.Show("Conectado");
             //else
