@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using System.Data.OracleClient;
 using System.Configuration;
 using System.Data.Sql;
 using System.Data.SqlClient;
-using System.Data.OracleClient;
+//using System.Data.OracleClient;
 using System.Data;
+using Oracle.DataAccess;
+using Oracle.DataAccess.Client;
 
 namespace CapaDatos.Conexion
 {

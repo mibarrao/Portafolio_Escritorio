@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using System.Data.OracleClient;
+//using System.Data.OracleClient;
+using Oracle.DataAccess;
 using CapaDatos.Conexion;
 using CapaEntidades;
 using System.Configuration;
 using System.Data.Sql;
+using Oracle.DataAccess.Client;
 
 namespace CapaDatos.Datos
 {
