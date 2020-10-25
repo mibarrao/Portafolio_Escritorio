@@ -15,9 +15,9 @@ using CapaDatos.Conexion;
 
 namespace CapaPresentacion.Formulario
 {
-    public partial class Login : Form 
+    public partial class frm_Login : Form 
     {
-        public Login()
+        public frm_Login()
         {
             InitializeComponent();
           //  using (OracleConnection cn = new OracleConnection(connOracleString)) ;
@@ -36,10 +36,13 @@ namespace CapaPresentacion.Formulario
 
             OracleDataReader lector = cm.ExecuteReader();
 
+            frm_Home home = new frm_Home();
             if (lector.Read())
                 {
-                MessageBox.Show("Te has podido conectar!");
+                //MessageBox.Show("Te has podido conectar!");
+                this.Hide();
                 conexion.Close();
+                home.Show();
             }
             else
                 {
