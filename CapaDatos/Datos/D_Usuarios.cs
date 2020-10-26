@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-//using System.Data.OracleClient;
-using Oracle.DataAccess;
 using CapaDatos.Conexion;
 using CapaEntidades;
 using System.Configuration;
 using System.Data.Sql;
+using Oracle.DataAccess;
 using Oracle.DataAccess.Client;
+using CapaEntidades;
+using CapaEntidades.Entidades;
 
 namespace CapaDatos.Datos
 {
@@ -41,6 +42,21 @@ namespace CapaDatos.Datos
                  return tabla;
             }
         }
+        
+        public DataTable Login (eUsuario obje)
+
+        {
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.Add("p_usuario",obje.usuario);
+            comando.Parameters.Add("p_clave",obje.clave);
+
+            OracleDataAdapter da = new OracleDataAdapter(comando);
+
+            da.Fill(tabla);
+
+            return tabla;
+        }
+
 
     }
 }
