@@ -10,13 +10,6 @@ namespace CapaEntidades.Entidades
     public class eUsuario
     {
 
-//        idUsuario number not null primary key
-//, idtipousuario number not null
-//, usuario varchar(50)
-//,clave varchar(50)
-//,activo number
-//, idcliente number
-//,idprofesional number
         public int idUsuario { get; set; }
         public int idTipoUsuario { get; set; }
         public string usuario { get; set; }

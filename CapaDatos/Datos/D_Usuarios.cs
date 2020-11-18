@@ -12,51 +12,78 @@ using Oracle.DataAccess;
 using Oracle.DataAccess.Client;
 using CapaEntidades;
 using CapaEntidades.Entidades;
+using CapaDatos.Contract;
 
-namespace CapaDatos.Datos
+namespace CapaDatos.Datos  
 {
-   public class D_Usuarios : D_Conexion
+    public class D_Usuarios
     {
-        OracleDataReader leer;
+        OracleConnection conn = D_Conexion.conectar();
 
-        DataTable tabla = new DataTable();
-        OracleCommand comando = new OracleCommand();
+        public DataTable D_usuario(eUsuario obje) {
 
-        public DataTable Mostrar() {
+            OracleCommand command = conn.CreateCommand();
+            command.CommandText = "select usuario, clave from usuario where usuario = :usuario and clave = :clave";
+            command.Parameters.Add(":usuario", OracleDbType.NVarchar2).Value = obje.usuario;
+            command.Parameters.Add(":clave", OracleDbType.NVarchar2).Value = obje.clave;
+            //OracleDataReader dr = command.ExecuteReader();
+
+            OracleDataAdapter da = new OracleDataAdapter(command);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+
+            conn.Close();
+
+
+        }
+
+
+
+        public eUsuario GetUsuario(string usuario, string clave)
+        {
             
-            string resultado = string.Empty;
 
             try
             {
-                conectar();
-                comando.CommandType = CommandType.StoredProcedure;
-                leer = comando.ExecuteReader();
-                tabla.Load(leer);
-                desconectar();
-                return tabla;
+                //Obtiene consulta para que devuelva valor
+                OracleCommand command = conn.CreateCommand();
+                command.CommandText = "select usuario, clave from usuario where usuario = :usuario and clave = :clave";
+                command.Parameters.Add (":usuario",OracleDbType.NVarchar2).Value  = usuario;
+                command.Parameters.Add(":clave", OracleDbType.NVarchar2).Value = clave;
+                OracleDataReader dr = command.ExecuteReader();
+
+                eUsuario usu = null;
+
+                while (dr.Read())
+                {
+                    usu = new eUsuario();
+                    usu.idUsuario = int.Parse(dr["IDUSUARIO"].ToString());
+                    usu.idTipoUsuario = int.Parse(dr["IDTIPOUSUARIO"].ToString());
+                    usu.usuario = (string)dr["USUARIO"];
+                    usu.clave = (string)dr["CLAVE"];
+                    usu.activo = bool.Parse(dr["ACTIVO"].ToString());
+                    usu.idcliente = int.Parse(dr["IDCLIENTE"].ToString());
+                    usu.idprofesional = int.Parse(dr["IDPROFESIONAL"].ToString());
+                }
+                dr.Close();
+                command.Dispose();
+                return usu;
 
             }
-
-            catch (Exception ex) {
-                Console.WriteLine("No se ha podido ejecutar la consulta! ", ex);
-                 return tabla;
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
             }
         }
         
-        public DataTable Login (eUsuario obje)
 
-        {
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.Parameters.Add("p_usuario",obje.usuario);
-            comando.Parameters.Add("p_clave",obje.clave);
-
-            OracleDataAdapter da = new OracleDataAdapter(comando);
-
-            da.Fill(tabla);
-
-            return tabla;
-        }
-
+      
 
     }
 }
