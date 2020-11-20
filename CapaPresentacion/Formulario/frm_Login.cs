@@ -31,6 +31,8 @@ namespace CapaPresentacion.Formulario
 
         public static string usuario;
         public static string clave;
+        public static string idTipoUsuario;
+        
 
         void p_logueo()
         {
@@ -44,7 +46,7 @@ namespace CapaPresentacion.Formulario
             {
                 MessageBox.Show("Bienvenido " + dt.Rows[0][0].ToString(), "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 usuario = dt.Rows[0][0].ToString();
-
+                idTipoUsuario = dt.Rows[0][2].ToString();
 
                 this.Hide();
                 home.Show();
@@ -60,6 +62,8 @@ namespace CapaPresentacion.Formulario
             else 
             {
                 MessageBox.Show("Usuario o contraseña incorrecto ", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtClave.Clear();
+                txtClave.Focus();
             }
 
         }
@@ -72,68 +76,30 @@ namespace CapaPresentacion.Formulario
 
         }
 
-        OracleConnection conexion = new OracleConnection("Data Source= orcl; Password = hr; USER ID= portafolio");
+        //OracleConnection conexion = new OracleConnection("Data Source= orcl; Password = hr; USER ID= portafolio");
+        
 
-        //D_Conexion cnx = new D_Conexion();
+        
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
              p_logueo();
 
-            /*
-            try {
-                //VALIDACION QUE CAMPO TXTUSUARIO TRAIGA DATOS
-                if (txtUsuario.Text == null || txtUsuario.Text.Trim().Equals(string.Empty))
-                {
-                    MessageBox.Show("Error : El login de usuario es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.txtUsuario.Focus();
-                }
-                //VALIDACION QUE CAMPO TXTCLAVE TRAIGA DATOS
-                else if (txtClave.Text == null || txtClave.Text.Trim().Equals(string.Empty))
-                {
-                    MessageBox.Show("Error : La clave de usuario es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.txtClave.Focus();
-                }
-                else
-                {
-                    OracleConnection conn = D_Conexion.conectar();
-
-
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error procesando Login.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-      
-
-        conexion.Open();
-            //cnx.conectar();
-            OracleCommand cm = new OracleCommand("select usuario, clave from usuario where usuario = :usuario and clave = :clave", conexion);
-
-            cm.Parameters.Add(":usuario", txtUsuario.Text);
-            cm.Parameters.Add(":clave", txtClave.Text);
-
-            OracleDataReader lector = cm.ExecuteReader();
-
-            if (lector.Read())
-            {
-                this.Hide();
-                conexion.Close();
-                home.Show();
-            }
-            else
-            {
-                MessageBox.Show("No se ha podido ingresar");
-            }
-
-
-            */
-
+          
 
         }
 
-
+        private void chxVer_CheckedChanged(object sender, EventArgs e)
+        {
+            
+            if (chxVer.Checked == true)
+            {
+                txtClave.PasswordChar = '\0';
+            }
+            else
+            {
+                txtClave.PasswordChar = '*';
+            }
+        }
     }
 }

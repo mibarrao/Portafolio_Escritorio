@@ -17,9 +17,30 @@ namespace CapaPresentacion.Formulario
             InitializeComponent();
         }
 
+        void p_BloqueoSegunPerfil() {
+            if (frm_Login.idTipoUsuario == "Administrador")
+            {
+                MantenedorToolStripMenuItem.Visible = true;
+                MantenedorToolStripMenuItem.Enabled = true;
+            }
+            else
+                if (frm_Login.idTipoUsuario == "Cliente")
+            {
+                MantenedorToolStripMenuItem.Visible = false;
+                MantenedorToolStripMenuItem.Enabled = false;
+            }
+        }
+
+
         private void sALIRToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void frm_Home_Load(object sender, EventArgs e)
+        {
+            //Designa que menu estaran disponibles segun tipo de usuario
+            p_BloqueoSegunPerfil();
         }
     }
 }

@@ -40,6 +40,7 @@ namespace CapaPresentacion.Formulario
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnIngresar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.chxVer = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -135,12 +136,25 @@ namespace CapaPresentacion.Formulario
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
+            // chxVer
+            // 
+            this.chxVer.AutoSize = true;
+            this.chxVer.BackColor = System.Drawing.Color.Transparent;
+            this.chxVer.Location = new System.Drawing.Point(372, 436);
+            this.chxVer.Name = "chxVer";
+            this.chxVer.Size = new System.Drawing.Size(45, 17);
+            this.chxVer.TabIndex = 6;
+            this.chxVer.Text = " Ver";
+            this.chxVer.UseVisualStyleBackColor = false;
+            this.chxVer.CheckedChanged += new System.EventHandler(this.chxVer_CheckedChanged);
+            // 
             // frm_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(471, 538);
+            this.Controls.Add(this.chxVer);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.txtClave);
             this.Controls.Add(this.pictureBox1);
@@ -170,5 +184,6 @@ namespace CapaPresentacion.Formulario
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox chxVer;
     }
 }

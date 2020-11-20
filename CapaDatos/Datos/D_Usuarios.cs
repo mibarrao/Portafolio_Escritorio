@@ -23,7 +23,7 @@ namespace CapaDatos.Datos
         public DataTable D_usuario(eUsuario obje) {
 
             OracleCommand command = conn.CreateCommand();
-            command.CommandText = "select usuario, clave from usuario where usuario = :usuario and clave = :clave";
+            command.CommandText = "select usuario,clave,descripciontipousuario from usuario usu inner join TIPOUSUARIO tp on tp.idtipousuario = usu.idtipousuario where usuario = :usuario and clave = :clave";
             command.Parameters.Add(":usuario", OracleDbType.NVarchar2).Value = obje.usuario;
             command.Parameters.Add(":clave", OracleDbType.NVarchar2).Value = obje.clave;
             //OracleDataReader dr = command.ExecuteReader();
