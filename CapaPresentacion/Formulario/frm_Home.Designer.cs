@@ -56,16 +56,26 @@
             this.btnLista = new System.Windows.Forms.Button();
             this.txtDV = new System.Windows.Forms.TextBox();
             this.lblRubroCliente = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.txtTelefonoCliente = new System.Windows.Forms.TextBox();
             this.lblTelefonoCliente = new System.Windows.Forms.Label();
             this.txtDireccionCliente = new System.Windows.Forms.TextBox();
             this.lblDireccionCliente = new System.Windows.Forms.Label();
             this.lblComunaCliente = new System.Windows.Forms.Label();
+            this.lblCiudad = new System.Windows.Forms.Label();
+            this.txtMailCliente = new System.Windows.Forms.TextBox();
+            this.lblMailCliente = new System.Windows.Forms.Label();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.pnlIngresar = new System.Windows.Forms.Panel();
+            this.cmbRubro = new System.Windows.Forms.ComboBox();
+            this.cmbComuna = new System.Windows.Forms.ComboBox();
+            this.cmbCiudad = new System.Windows.Forms.ComboBox();
+            this.cmbRegion = new System.Windows.Forms.ComboBox();
+            this.lblRegion = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.grxMantenedorCliente.SuspendLayout();
+            this.pnlIngresar.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -157,23 +167,7 @@
             // grxMantenedorCliente
             // 
             this.grxMantenedorCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.grxMantenedorCliente.Controls.Add(this.lblComunaCliente);
-            this.grxMantenedorCliente.Controls.Add(this.txtDireccionCliente);
-            this.grxMantenedorCliente.Controls.Add(this.lblDireccionCliente);
-            this.grxMantenedorCliente.Controls.Add(this.txtTelefonoCliente);
-            this.grxMantenedorCliente.Controls.Add(this.lblTelefonoCliente);
-            this.grxMantenedorCliente.Controls.Add(this.listBox1);
-            this.grxMantenedorCliente.Controls.Add(this.lblRubroCliente);
-            this.grxMantenedorCliente.Controls.Add(this.txtDV);
-            this.grxMantenedorCliente.Controls.Add(this.lblDvCliente);
-            this.grxMantenedorCliente.Controls.Add(this.txtRut);
-            this.grxMantenedorCliente.Controls.Add(this.lblRutCliente);
-            this.grxMantenedorCliente.Controls.Add(this.txtMaternoCliente);
-            this.grxMantenedorCliente.Controls.Add(this.txtPaternoCliente);
-            this.grxMantenedorCliente.Controls.Add(this.txtNombreCliente);
-            this.grxMantenedorCliente.Controls.Add(this.lblMaternoCliente);
-            this.grxMantenedorCliente.Controls.Add(this.lblPaternoCliente);
-            this.grxMantenedorCliente.Controls.Add(this.lblNombreCliente);
+            this.grxMantenedorCliente.Controls.Add(this.pnlIngresar);
             this.grxMantenedorCliente.Controls.Add(this.btnIngresa);
             this.grxMantenedorCliente.Controls.Add(this.btnActualiza);
             this.grxMantenedorCliente.Controls.Add(this.btnElimina);
@@ -191,7 +185,7 @@
             // 
             this.lblDvCliente.AutoSize = true;
             this.lblDvCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDvCliente.Location = new System.Drawing.Point(188, 115);
+            this.lblDvCliente.Location = new System.Drawing.Point(183, 65);
             this.lblDvCliente.Name = "lblDvCliente";
             this.lblDvCliente.Size = new System.Drawing.Size(23, 15);
             this.lblDvCliente.TabIndex = 12;
@@ -201,7 +195,7 @@
             // txtRut
             // 
             this.txtRut.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtRut.Location = new System.Drawing.Point(55, 113);
+            this.txtRut.Location = new System.Drawing.Point(50, 63);
             this.txtRut.Name = "txtRut";
             this.txtRut.Size = new System.Drawing.Size(112, 13);
             this.txtRut.TabIndex = 11;
@@ -210,7 +204,7 @@
             // 
             this.lblRutCliente.AutoSize = true;
             this.lblRutCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRutCliente.Location = new System.Drawing.Point(10, 114);
+            this.lblRutCliente.Location = new System.Drawing.Point(5, 64);
             this.lblRutCliente.Name = "lblRutCliente";
             this.lblRutCliente.Size = new System.Drawing.Size(26, 15);
             this.lblRutCliente.TabIndex = 10;
@@ -220,7 +214,7 @@
             // txtMaternoCliente
             // 
             this.txtMaternoCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMaternoCliente.Location = new System.Drawing.Point(482, 74);
+            this.txtMaternoCliente.Location = new System.Drawing.Point(477, 24);
             this.txtMaternoCliente.Name = "txtMaternoCliente";
             this.txtMaternoCliente.Size = new System.Drawing.Size(120, 13);
             this.txtMaternoCliente.TabIndex = 9;
@@ -228,7 +222,7 @@
             // txtPaternoCliente
             // 
             this.txtPaternoCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPaternoCliente.Location = new System.Drawing.Point(291, 74);
+            this.txtPaternoCliente.Location = new System.Drawing.Point(286, 24);
             this.txtPaternoCliente.Name = "txtPaternoCliente";
             this.txtPaternoCliente.Size = new System.Drawing.Size(120, 13);
             this.txtPaternoCliente.TabIndex = 8;
@@ -236,7 +230,7 @@
             // txtNombreCliente
             // 
             this.txtNombreCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNombreCliente.Location = new System.Drawing.Point(68, 74);
+            this.txtNombreCliente.Location = new System.Drawing.Point(63, 24);
             this.txtNombreCliente.Name = "txtNombreCliente";
             this.txtNombreCliente.Size = new System.Drawing.Size(161, 13);
             this.txtNombreCliente.TabIndex = 7;
@@ -245,7 +239,7 @@
             // 
             this.lblMaternoCliente.AutoSize = true;
             this.lblMaternoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaternoCliente.Location = new System.Drawing.Point(423, 75);
+            this.lblMaternoCliente.Location = new System.Drawing.Point(418, 25);
             this.lblMaternoCliente.Name = "lblMaternoCliente";
             this.lblMaternoCliente.Size = new System.Drawing.Size(53, 15);
             this.lblMaternoCliente.TabIndex = 6;
@@ -255,7 +249,7 @@
             // 
             this.lblPaternoCliente.AutoSize = true;
             this.lblPaternoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaternoCliente.Location = new System.Drawing.Point(235, 76);
+            this.lblPaternoCliente.Location = new System.Drawing.Point(230, 26);
             this.lblPaternoCliente.Name = "lblPaternoCliente";
             this.lblPaternoCliente.Size = new System.Drawing.Size(50, 15);
             this.lblPaternoCliente.TabIndex = 5;
@@ -265,7 +259,7 @@
             // 
             this.lblNombreCliente.AutoSize = true;
             this.lblNombreCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreCliente.Location = new System.Drawing.Point(10, 75);
+            this.lblNombreCliente.Location = new System.Drawing.Point(5, 25);
             this.lblNombreCliente.Name = "lblNombreCliente";
             this.lblNombreCliente.Size = new System.Drawing.Size(52, 15);
             this.lblNombreCliente.TabIndex = 4;
@@ -332,7 +326,7 @@
             // 
             this.txtDV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDV.Enabled = false;
-            this.txtDV.Location = new System.Drawing.Point(212, 113);
+            this.txtDV.Location = new System.Drawing.Point(207, 63);
             this.txtDV.Name = "txtDV";
             this.txtDV.Size = new System.Drawing.Size(35, 13);
             this.txtDV.TabIndex = 13;
@@ -342,30 +336,16 @@
             // 
             this.lblRubroCliente.AutoSize = true;
             this.lblRubroCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRubroCliente.Location = new System.Drawing.Point(262, 115);
+            this.lblRubroCliente.Location = new System.Drawing.Point(257, 65);
             this.lblRubroCliente.Name = "lblRubroCliente";
             this.lblRubroCliente.Size = new System.Drawing.Size(41, 15);
             this.lblRubroCliente.TabIndex = 14;
             this.lblRubroCliente.Text = "Rubro";
             // 
-            // listBox1
-            // 
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
-            "HOLA",
-            "DIA",
-            "NOCHE",
-            "TAL VEZ"});
-            this.listBox1.Location = new System.Drawing.Point(309, 115);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(124, 26);
-            this.listBox1.TabIndex = 15;
-            // 
             // txtTelefonoCliente
             // 
             this.txtTelefonoCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTelefonoCliente.Location = new System.Drawing.Point(507, 120);
+            this.txtTelefonoCliente.Location = new System.Drawing.Point(502, 70);
             this.txtTelefonoCliente.Name = "txtTelefonoCliente";
             this.txtTelefonoCliente.Size = new System.Drawing.Size(112, 13);
             this.txtTelefonoCliente.TabIndex = 17;
@@ -374,7 +354,7 @@
             // 
             this.lblTelefonoCliente.AutoSize = true;
             this.lblTelefonoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefonoCliente.Location = new System.Drawing.Point(446, 118);
+            this.lblTelefonoCliente.Location = new System.Drawing.Point(441, 68);
             this.lblTelefonoCliente.Name = "lblTelefonoCliente";
             this.lblTelefonoCliente.Size = new System.Drawing.Size(55, 15);
             this.lblTelefonoCliente.TabIndex = 16;
@@ -384,7 +364,7 @@
             // txtDireccionCliente
             // 
             this.txtDireccionCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtDireccionCliente.Location = new System.Drawing.Point(68, 153);
+            this.txtDireccionCliente.Location = new System.Drawing.Point(346, 111);
             this.txtDireccionCliente.Name = "txtDireccionCliente";
             this.txtDireccionCliente.Size = new System.Drawing.Size(268, 13);
             this.txtDireccionCliente.TabIndex = 19;
@@ -393,7 +373,7 @@
             // 
             this.lblDireccionCliente.AutoSize = true;
             this.lblDireccionCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDireccionCliente.Location = new System.Drawing.Point(10, 151);
+            this.lblDireccionCliente.Location = new System.Drawing.Point(281, 109);
             this.lblDireccionCliente.Name = "lblDireccionCliente";
             this.lblDireccionCliente.Size = new System.Drawing.Size(59, 15);
             this.lblDireccionCliente.TabIndex = 18;
@@ -404,11 +384,130 @@
             // 
             this.lblComunaCliente.AutoSize = true;
             this.lblComunaCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblComunaCliente.Location = new System.Drawing.Point(352, 154);
+            this.lblComunaCliente.Location = new System.Drawing.Point(10, 147);
             this.lblComunaCliente.Name = "lblComunaCliente";
             this.lblComunaCliente.Size = new System.Drawing.Size(54, 15);
             this.lblComunaCliente.TabIndex = 20;
             this.lblComunaCliente.Text = "Comuna";
+            // 
+            // lblCiudad
+            // 
+            this.lblCiudad.AutoSize = true;
+            this.lblCiudad.Enabled = false;
+            this.lblCiudad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCiudad.Location = new System.Drawing.Point(196, 147);
+            this.lblCiudad.Name = "lblCiudad";
+            this.lblCiudad.Size = new System.Drawing.Size(46, 15);
+            this.lblCiudad.TabIndex = 21;
+            this.lblCiudad.Text = "Ciudad";
+            // 
+            // txtMailCliente
+            // 
+            this.txtMailCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMailCliente.Location = new System.Drawing.Point(72, 111);
+            this.txtMailCliente.Name = "txtMailCliente";
+            this.txtMailCliente.Size = new System.Drawing.Size(181, 13);
+            this.txtMailCliente.TabIndex = 23;
+            // 
+            // lblMailCliente
+            // 
+            this.lblMailCliente.AutoSize = true;
+            this.lblMailCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMailCliente.Location = new System.Drawing.Point(5, 112);
+            this.lblMailCliente.Name = "lblMailCliente";
+            this.lblMailCliente.Size = new System.Drawing.Size(31, 15);
+            this.lblMailCliente.TabIndex = 22;
+            this.lblMailCliente.Text = "Mail";
+            this.lblMailCliente.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnGuardar.Location = new System.Drawing.Point(274, 197);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(89, 23);
+            this.btnGuardar.TabIndex = 24;
+            this.btnGuardar.Text = "GUARDAR";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            // 
+            // pnlIngresar
+            // 
+            this.pnlIngresar.Controls.Add(this.cmbRegion);
+            this.pnlIngresar.Controls.Add(this.lblRegion);
+            this.pnlIngresar.Controls.Add(this.cmbCiudad);
+            this.pnlIngresar.Controls.Add(this.cmbComuna);
+            this.pnlIngresar.Controls.Add(this.cmbRubro);
+            this.pnlIngresar.Controls.Add(this.btnGuardar);
+            this.pnlIngresar.Controls.Add(this.txtMailCliente);
+            this.pnlIngresar.Controls.Add(this.lblMailCliente);
+            this.pnlIngresar.Controls.Add(this.lblCiudad);
+            this.pnlIngresar.Controls.Add(this.lblComunaCliente);
+            this.pnlIngresar.Controls.Add(this.txtDireccionCliente);
+            this.pnlIngresar.Controls.Add(this.lblDireccionCliente);
+            this.pnlIngresar.Controls.Add(this.txtTelefonoCliente);
+            this.pnlIngresar.Controls.Add(this.lblTelefonoCliente);
+            this.pnlIngresar.Controls.Add(this.lblRubroCliente);
+            this.pnlIngresar.Controls.Add(this.txtDV);
+            this.pnlIngresar.Controls.Add(this.lblDvCliente);
+            this.pnlIngresar.Controls.Add(this.txtRut);
+            this.pnlIngresar.Controls.Add(this.lblRutCliente);
+            this.pnlIngresar.Controls.Add(this.txtMaternoCliente);
+            this.pnlIngresar.Controls.Add(this.txtPaternoCliente);
+            this.pnlIngresar.Controls.Add(this.txtNombreCliente);
+            this.pnlIngresar.Controls.Add(this.lblMaternoCliente);
+            this.pnlIngresar.Controls.Add(this.lblPaternoCliente);
+            this.pnlIngresar.Controls.Add(this.lblNombreCliente);
+            this.pnlIngresar.Location = new System.Drawing.Point(5, 66);
+            this.pnlIngresar.Name = "pnlIngresar";
+            this.pnlIngresar.Size = new System.Drawing.Size(703, 240);
+            this.pnlIngresar.TabIndex = 25;
+            this.pnlIngresar.Visible = false;
+            // 
+            // cmbRubro
+            // 
+            this.cmbRubro.FormattingEnabled = true;
+            this.cmbRubro.Location = new System.Drawing.Point(304, 63);
+            this.cmbRubro.Name = "cmbRubro";
+            this.cmbRubro.Size = new System.Drawing.Size(121, 21);
+            this.cmbRubro.TabIndex = 25;
+            // 
+            // cmbComuna
+            // 
+            this.cmbComuna.FormattingEnabled = true;
+            this.cmbComuna.Location = new System.Drawing.Point(63, 146);
+            this.cmbComuna.Name = "cmbComuna";
+            this.cmbComuna.Size = new System.Drawing.Size(121, 21);
+            this.cmbComuna.TabIndex = 26;
+            // 
+            // cmbCiudad
+            // 
+            this.cmbCiudad.FormattingEnabled = true;
+            this.cmbCiudad.Location = new System.Drawing.Point(248, 146);
+            this.cmbCiudad.Name = "cmbCiudad";
+            this.cmbCiudad.Size = new System.Drawing.Size(121, 21);
+            this.cmbCiudad.TabIndex = 27;
+            // 
+            // cmbRegion
+            // 
+            this.cmbRegion.FormattingEnabled = true;
+            this.cmbRegion.Location = new System.Drawing.Point(433, 146);
+            this.cmbRegion.Name = "cmbRegion";
+            this.cmbRegion.Size = new System.Drawing.Size(121, 21);
+            this.cmbRegion.TabIndex = 29;
+            // 
+            // lblRegion
+            // 
+            this.lblRegion.AutoSize = true;
+            this.lblRegion.Enabled = false;
+            this.lblRegion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegion.Location = new System.Drawing.Point(381, 147);
+            this.lblRegion.Name = "lblRegion";
+            this.lblRegion.Size = new System.Drawing.Size(38, 12);
+            this.lblRegion.TabIndex = 28;
+            this.lblRegion.Text = "Region";
             // 
             // frm_Home
             // 
@@ -428,7 +527,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.grxMantenedorCliente.ResumeLayout(false);
-            this.grxMantenedorCliente.PerformLayout();
+            this.pnlIngresar.ResumeLayout(false);
+            this.pnlIngresar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -462,12 +562,21 @@
         private System.Windows.Forms.Label lblRutCliente;
         private System.Windows.Forms.TextBox txtDV;
         private System.Windows.Forms.Label lblRubroCliente;
-        private System.Windows.Forms.ListBox listBox1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TextBox txtTelefonoCliente;
         private System.Windows.Forms.Label lblTelefonoCliente;
         private System.Windows.Forms.TextBox txtDireccionCliente;
         private System.Windows.Forms.Label lblDireccionCliente;
         private System.Windows.Forms.Label lblComunaCliente;
+        private System.Windows.Forms.Label lblCiudad;
+        private System.Windows.Forms.TextBox txtMailCliente;
+        private System.Windows.Forms.Label lblMailCliente;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Panel pnlIngresar;
+        private System.Windows.Forms.ComboBox cmbRegion;
+        private System.Windows.Forms.Label lblRegion;
+        private System.Windows.Forms.ComboBox cmbCiudad;
+        private System.Windows.Forms.ComboBox cmbComuna;
+        private System.Windows.Forms.ComboBox cmbRubro;
     }
 }

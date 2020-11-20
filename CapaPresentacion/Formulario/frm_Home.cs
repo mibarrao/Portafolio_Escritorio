@@ -93,7 +93,7 @@ namespace CapaPresentacion.Formulario
 
         private void btnIngresa_Click(object sender, EventArgs e)
         {
-
+            pnlIngresar.Visible = true;
         }
 
         private void btnElimina_Click(object sender, EventArgs e)
