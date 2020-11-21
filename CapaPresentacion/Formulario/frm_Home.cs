@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaDatos.Conexion;
+using Oracle.DataAccess.Client;
+using CapaEntidades.Entidades;
+using CapaDatos.Datos;
 
 namespace CapaPresentacion.Formulario
 {
@@ -98,16 +102,20 @@ namespace CapaPresentacion.Formulario
 
         private void btnElimina_Click(object sender, EventArgs e)
         {
+            pnlIngresar.Visible = false;
 
         }
 
         private void btnLista_Click(object sender, EventArgs e)
         {
+            pnlIngresar.Visible = false;
 
         }
 
         private void btnActualiza_Click(object sender, EventArgs e)
         {
+            pnlIngresar.Visible = false;
+            
 
         }
 
@@ -130,7 +138,13 @@ namespace CapaPresentacion.Formulario
 
         private void ClienteMantenedor_Click(object sender, EventArgs e)
         {
-               grxMantenedorCliente.Visible = true;
+            grxMantenedorCliente.Visible = true;
+            dRubro rubrodao = new dRubro();
+            DataTable dt = rubrodao.obtieneRubros();
+
+            this.cbRubro.DataSource = dt;
+            this.cbRubro.DisplayMember = "descripcionrubro";
+            this.cbRubro.ValueMember = "idrubro";
         }
 
         private void txtDV_TextChanged(object sender, EventArgs e)
@@ -138,6 +152,9 @@ namespace CapaPresentacion.Formulario
             pCalculaDV(int.Parse(txtRut.Text));
         }
 
-       
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -34,7 +34,7 @@ namespace CapaDatos.Datos
             return dt;
 
             conn.Close();
-
+            conn.Dispose();
 
         }
 
