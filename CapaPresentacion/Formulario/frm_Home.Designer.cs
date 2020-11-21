@@ -42,10 +42,10 @@
             this.sALIRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grxMantenedorCliente = new System.Windows.Forms.GroupBox();
             this.pnlIngresar = new System.Windows.Forms.Panel();
-            this.cmbRegion = new System.Windows.Forms.ComboBox();
+            this.cbRegion = new System.Windows.Forms.ComboBox();
             this.lblRegion = new System.Windows.Forms.Label();
-            this.cmbCiudad = new System.Windows.Forms.ComboBox();
-            this.cmbComuna = new System.Windows.Forms.ComboBox();
+            this.cbCiudad = new System.Windows.Forms.ComboBox();
+            this.cbComuna = new System.Windows.Forms.ComboBox();
             this.cbRubro = new System.Windows.Forms.ComboBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.txtMailCliente = new System.Windows.Forms.TextBox();
@@ -84,12 +84,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(68, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(70, 26);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(67, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(69, 22);
             // 
             // menuStrip1
             // 
@@ -103,7 +103,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(760, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(760, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -114,21 +114,21 @@
             this.ProfesionalMantenedor});
             this.MantenedorToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
             this.MantenedorToolStripMenuItem.Name = "MantenedorToolStripMenuItem";
-            this.MantenedorToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
+            this.MantenedorToolStripMenuItem.Size = new System.Drawing.Size(123, 24);
             this.MantenedorToolStripMenuItem.Text = "MANTENEDOR";
             this.MantenedorToolStripMenuItem.Click += new System.EventHandler(this.MantenedorToolStripMenuItem_Click);
             // 
             // ClienteMantenedor
             // 
             this.ClienteMantenedor.Name = "ClienteMantenedor";
-            this.ClienteMantenedor.Size = new System.Drawing.Size(150, 22);
+            this.ClienteMantenedor.Size = new System.Drawing.Size(186, 26);
             this.ClienteMantenedor.Text = "CLIENTE";
             this.ClienteMantenedor.Click += new System.EventHandler(this.ClienteMantenedor_Click);
             // 
             // ProfesionalMantenedor
             // 
             this.ProfesionalMantenedor.Name = "ProfesionalMantenedor";
-            this.ProfesionalMantenedor.Size = new System.Drawing.Size(150, 22);
+            this.ProfesionalMantenedor.Size = new System.Drawing.Size(186, 26);
             this.ProfesionalMantenedor.Text = "PROFESIONAL";
             // 
             // cLIENTEToolStripMenuItem1
@@ -137,7 +137,7 @@
             this.bUSCARToolStripMenuItem});
             this.cLIENTEToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
             this.cLIENTEToolStripMenuItem1.Name = "cLIENTEToolStripMenuItem1";
-            this.cLIENTEToolStripMenuItem1.Size = new System.Drawing.Size(63, 20);
+            this.cLIENTEToolStripMenuItem1.Size = new System.Drawing.Size(78, 24);
             this.cLIENTEToolStripMenuItem1.Text = "CLIENTE";
             this.cLIENTEToolStripMenuItem1.Click += new System.EventHandler(this.cLIENTEToolStripMenuItem1_Click);
             // 
@@ -145,14 +145,14 @@
             // 
             this.bUSCARToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
             this.bUSCARToolStripMenuItem.Name = "bUSCARToolStripMenuItem";
-            this.bUSCARToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.bUSCARToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.bUSCARToolStripMenuItem.Text = "BUSCAR";
             // 
             // InformesToolStripMenuItem
             // 
             this.InformesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
             this.InformesToolStripMenuItem.Name = "InformesToolStripMenuItem";
-            this.InformesToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.InformesToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
             this.InformesToolStripMenuItem.Text = "INFORMES";
             this.InformesToolStripMenuItem.Click += new System.EventHandler(this.InformesToolStripMenuItem_Click);
             // 
@@ -160,7 +160,7 @@
             // 
             this.sALIRToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
             this.sALIRToolStripMenuItem.Name = "sALIRToolStripMenuItem";
-            this.sALIRToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
+            this.sALIRToolStripMenuItem.Size = new System.Drawing.Size(61, 24);
             this.sALIRToolStripMenuItem.Text = "SALIR";
             this.sALIRToolStripMenuItem.Click += new System.EventHandler(this.sALIRToolStripMenuItem_Click);
             // 
@@ -183,10 +183,10 @@
             // 
             // pnlIngresar
             // 
-            this.pnlIngresar.Controls.Add(this.cmbRegion);
+            this.pnlIngresar.Controls.Add(this.cbRegion);
             this.pnlIngresar.Controls.Add(this.lblRegion);
-            this.pnlIngresar.Controls.Add(this.cmbCiudad);
-            this.pnlIngresar.Controls.Add(this.cmbComuna);
+            this.pnlIngresar.Controls.Add(this.cbCiudad);
+            this.pnlIngresar.Controls.Add(this.cbComuna);
             this.pnlIngresar.Controls.Add(this.cbRubro);
             this.pnlIngresar.Controls.Add(this.btnGuardar);
             this.pnlIngresar.Controls.Add(this.txtMailCliente);
@@ -214,13 +214,13 @@
             this.pnlIngresar.TabIndex = 25;
             this.pnlIngresar.Visible = false;
             // 
-            // cmbRegion
+            // cbRegion
             // 
-            this.cmbRegion.FormattingEnabled = true;
-            this.cmbRegion.Location = new System.Drawing.Point(433, 146);
-            this.cmbRegion.Name = "cmbRegion";
-            this.cmbRegion.Size = new System.Drawing.Size(121, 21);
-            this.cmbRegion.TabIndex = 29;
+            this.cbRegion.FormattingEnabled = true;
+            this.cbRegion.Location = new System.Drawing.Point(433, 146);
+            this.cbRegion.Name = "cbRegion";
+            this.cbRegion.Size = new System.Drawing.Size(121, 21);
+            this.cbRegion.TabIndex = 29;
             // 
             // lblRegion
             // 
@@ -229,25 +229,25 @@
             this.lblRegion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRegion.Location = new System.Drawing.Point(380, 147);
             this.lblRegion.Name = "lblRegion";
-            this.lblRegion.Size = new System.Drawing.Size(47, 15);
+            this.lblRegion.Size = new System.Drawing.Size(55, 18);
             this.lblRegion.TabIndex = 28;
             this.lblRegion.Text = "Region";
             // 
-            // cmbCiudad
+            // cbCiudad
             // 
-            this.cmbCiudad.FormattingEnabled = true;
-            this.cmbCiudad.Location = new System.Drawing.Point(248, 146);
-            this.cmbCiudad.Name = "cmbCiudad";
-            this.cmbCiudad.Size = new System.Drawing.Size(121, 21);
-            this.cmbCiudad.TabIndex = 27;
+            this.cbCiudad.FormattingEnabled = true;
+            this.cbCiudad.Location = new System.Drawing.Point(248, 146);
+            this.cbCiudad.Name = "cbCiudad";
+            this.cbCiudad.Size = new System.Drawing.Size(121, 21);
+            this.cbCiudad.TabIndex = 27;
             // 
-            // cmbComuna
+            // cbComuna
             // 
-            this.cmbComuna.FormattingEnabled = true;
-            this.cmbComuna.Location = new System.Drawing.Point(63, 146);
-            this.cmbComuna.Name = "cmbComuna";
-            this.cmbComuna.Size = new System.Drawing.Size(121, 21);
-            this.cmbComuna.TabIndex = 26;
+            this.cbComuna.FormattingEnabled = true;
+            this.cbComuna.Location = new System.Drawing.Point(63, 146);
+            this.cbComuna.Name = "cbComuna";
+            this.cbComuna.Size = new System.Drawing.Size(121, 21);
+            this.cbComuna.TabIndex = 26;
             // 
             // cbRubro
             // 
@@ -285,7 +285,7 @@
             this.lblMailCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMailCliente.Location = new System.Drawing.Point(5, 112);
             this.lblMailCliente.Name = "lblMailCliente";
-            this.lblMailCliente.Size = new System.Drawing.Size(31, 15);
+            this.lblMailCliente.Size = new System.Drawing.Size(35, 18);
             this.lblMailCliente.TabIndex = 22;
             this.lblMailCliente.Text = "Mail";
             this.lblMailCliente.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -297,7 +297,7 @@
             this.lblCiudad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCiudad.Location = new System.Drawing.Point(196, 147);
             this.lblCiudad.Name = "lblCiudad";
-            this.lblCiudad.Size = new System.Drawing.Size(46, 15);
+            this.lblCiudad.Size = new System.Drawing.Size(54, 18);
             this.lblCiudad.TabIndex = 21;
             this.lblCiudad.Text = "Ciudad";
             // 
@@ -307,7 +307,7 @@
             this.lblComunaCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblComunaCliente.Location = new System.Drawing.Point(10, 147);
             this.lblComunaCliente.Name = "lblComunaCliente";
-            this.lblComunaCliente.Size = new System.Drawing.Size(54, 15);
+            this.lblComunaCliente.Size = new System.Drawing.Size(65, 18);
             this.lblComunaCliente.TabIndex = 20;
             this.lblComunaCliente.Text = "Comuna";
             // 
@@ -325,7 +325,7 @@
             this.lblDireccionCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDireccionCliente.Location = new System.Drawing.Point(281, 109);
             this.lblDireccionCliente.Name = "lblDireccionCliente";
-            this.lblDireccionCliente.Size = new System.Drawing.Size(59, 15);
+            this.lblDireccionCliente.Size = new System.Drawing.Size(71, 18);
             this.lblDireccionCliente.TabIndex = 18;
             this.lblDireccionCliente.Text = "Direccion";
             this.lblDireccionCliente.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -344,7 +344,7 @@
             this.lblTelefonoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelefonoCliente.Location = new System.Drawing.Point(441, 68);
             this.lblTelefonoCliente.Name = "lblTelefonoCliente";
-            this.lblTelefonoCliente.Size = new System.Drawing.Size(55, 15);
+            this.lblTelefonoCliente.Size = new System.Drawing.Size(66, 18);
             this.lblTelefonoCliente.TabIndex = 16;
             this.lblTelefonoCliente.Text = "Telefono";
             this.lblTelefonoCliente.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -355,7 +355,7 @@
             this.lblRubroCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRubroCliente.Location = new System.Drawing.Point(257, 65);
             this.lblRubroCliente.Name = "lblRubroCliente";
-            this.lblRubroCliente.Size = new System.Drawing.Size(41, 15);
+            this.lblRubroCliente.Size = new System.Drawing.Size(49, 18);
             this.lblRubroCliente.TabIndex = 14;
             this.lblRubroCliente.Text = "Rubro";
             // 
@@ -375,7 +375,7 @@
             this.lblDvCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDvCliente.Location = new System.Drawing.Point(183, 65);
             this.lblDvCliente.Name = "lblDvCliente";
-            this.lblDvCliente.Size = new System.Drawing.Size(23, 15);
+            this.lblDvCliente.Size = new System.Drawing.Size(28, 18);
             this.lblDvCliente.TabIndex = 12;
             this.lblDvCliente.Text = "DV";
             this.lblDvCliente.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -394,7 +394,7 @@
             this.lblRutCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRutCliente.Location = new System.Drawing.Point(5, 64);
             this.lblRutCliente.Name = "lblRutCliente";
-            this.lblRutCliente.Size = new System.Drawing.Size(26, 15);
+            this.lblRutCliente.Size = new System.Drawing.Size(31, 18);
             this.lblRutCliente.TabIndex = 10;
             this.lblRutCliente.Text = "Rut";
             this.lblRutCliente.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -429,7 +429,7 @@
             this.lblMaternoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaternoCliente.Location = new System.Drawing.Point(418, 25);
             this.lblMaternoCliente.Name = "lblMaternoCliente";
-            this.lblMaternoCliente.Size = new System.Drawing.Size(53, 15);
+            this.lblMaternoCliente.Size = new System.Drawing.Size(63, 18);
             this.lblMaternoCliente.TabIndex = 6;
             this.lblMaternoCliente.Text = "Materno";
             // 
@@ -439,7 +439,7 @@
             this.lblPaternoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPaternoCliente.Location = new System.Drawing.Point(230, 26);
             this.lblPaternoCliente.Name = "lblPaternoCliente";
-            this.lblPaternoCliente.Size = new System.Drawing.Size(50, 15);
+            this.lblPaternoCliente.Size = new System.Drawing.Size(60, 18);
             this.lblPaternoCliente.TabIndex = 5;
             this.lblPaternoCliente.Text = "Paterno";
             // 
@@ -449,7 +449,7 @@
             this.lblNombreCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombreCliente.Location = new System.Drawing.Point(5, 25);
             this.lblNombreCliente.Name = "lblNombreCliente";
-            this.lblNombreCliente.Size = new System.Drawing.Size(52, 15);
+            this.lblNombreCliente.Size = new System.Drawing.Size(62, 18);
             this.lblNombreCliente.TabIndex = 4;
             this.lblNombreCliente.Text = "Nombre";
             // 
@@ -574,10 +574,10 @@
         private System.Windows.Forms.Label lblMailCliente;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Panel pnlIngresar;
-        private System.Windows.Forms.ComboBox cmbRegion;
+        private System.Windows.Forms.ComboBox cbRegion;
         private System.Windows.Forms.Label lblRegion;
-        private System.Windows.Forms.ComboBox cmbCiudad;
-        private System.Windows.Forms.ComboBox cmbComuna;
+        private System.Windows.Forms.ComboBox cbCiudad;
+        private System.Windows.Forms.ComboBox cbComuna;
         private System.Windows.Forms.ComboBox cbRubro;
     }
 }

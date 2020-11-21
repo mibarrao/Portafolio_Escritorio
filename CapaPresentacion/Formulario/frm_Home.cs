@@ -139,12 +139,23 @@ namespace CapaPresentacion.Formulario
         private void ClienteMantenedor_Click(object sender, EventArgs e)
         {
             grxMantenedorCliente.Visible = true;
-            dRubro rubrodao = new dRubro();
-            DataTable dt = rubrodao.obtieneRubros();
 
-            this.cbRubro.DataSource = dt;
+            /*CARGA CB RUBROS*/
+            dRubro rubrodao = new dRubro();
+            DataTable drubro = rubrodao.obtieneRubros();
+
+            this.cbRubro.DataSource = drubro;
             this.cbRubro.DisplayMember = "descripcionrubro";
             this.cbRubro.ValueMember = "idrubro";
+
+
+            /*CARGA CB RUBROS*/
+            dComuna comunadao = new dComuna();
+            DataTable dcomuna = comunadao.obtieneComunacb();
+
+            this.cbComuna.DataSource = dcomuna;
+            this.cbComuna.DisplayMember = "nombrecomuna";
+            this.cbComuna.ValueMember = "idcomuna";
         }
 
         private void txtDV_TextChanged(object sender, EventArgs e)
