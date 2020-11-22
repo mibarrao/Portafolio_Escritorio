@@ -149,13 +149,27 @@ namespace CapaPresentacion.Formulario
             this.cbRubro.ValueMember = "idrubro";
 
 
-            /*CARGA CB RUBROS*/
+            /*CARGA CB COMUNA*/
             dComuna comunadao = new dComuna();
-            DataTable dcomuna = comunadao.obtieneComunacb();
+            DataTable dcomuna = comunadao.obtieneComunacb();          
 
             this.cbComuna.DataSource = dcomuna;
             this.cbComuna.DisplayMember = "nombrecomuna";
             this.cbComuna.ValueMember = "idcomuna";
+
+            /*CARGA CB CIUDAD*/
+
+            this.cbCiudad.DataSource = dcomuna;
+            this.cbCiudad.DisplayMember = "nombreciudad";
+            this.cbCiudad.ValueMember = "idciudad";
+            
+            /*CARGA CB REGION*/
+
+            this.cbRegion.DataSource = dcomuna;
+            this.cbRegion.DisplayMember = "nombreregion";
+            this.cbRegion.ValueMember = "idregion";
+
+
         }
 
         private void txtDV_TextChanged(object sender, EventArgs e)
@@ -166,6 +180,11 @@ namespace CapaPresentacion.Formulario
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbComuna_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

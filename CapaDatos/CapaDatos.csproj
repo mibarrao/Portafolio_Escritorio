@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Conexion\D_Conexion.cs" />
     <Compile Include="Contract\IOperacionCrud.cs" />
+    <Compile Include="Datos\dCiudad.cs" />
     <Compile Include="Datos\dClientes.cs" />
     <Compile Include="Datos\dComuna.cs" />
     <Compile Include="Datos\dRubro.cs" />

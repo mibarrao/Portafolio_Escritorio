@@ -216,6 +216,7 @@
             // 
             // cbRegion
             // 
+            this.cbRegion.Enabled = false;
             this.cbRegion.FormattingEnabled = true;
             this.cbRegion.Location = new System.Drawing.Point(433, 146);
             this.cbRegion.Name = "cbRegion";
@@ -235,6 +236,7 @@
             // 
             // cbCiudad
             // 
+            this.cbCiudad.Enabled = false;
             this.cbCiudad.FormattingEnabled = true;
             this.cbCiudad.Location = new System.Drawing.Point(248, 146);
             this.cbCiudad.Name = "cbCiudad";
@@ -243,11 +245,14 @@
             // 
             // cbComuna
             // 
+            this.cbComuna.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbComuna.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbComuna.FormattingEnabled = true;
-            this.cbComuna.Location = new System.Drawing.Point(63, 146);
+            this.cbComuna.Location = new System.Drawing.Point(81, 146);
             this.cbComuna.Name = "cbComuna";
             this.cbComuna.Size = new System.Drawing.Size(121, 21);
             this.cbComuna.TabIndex = 26;
+            this.cbComuna.SelectedIndexChanged += new System.EventHandler(this.cbComuna_SelectedIndexChanged);
             // 
             // cbRubro
             // 
@@ -273,10 +278,10 @@
             // 
             // txtMailCliente
             // 
-            this.txtMailCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMailCliente.Location = new System.Drawing.Point(72, 111);
+            this.txtMailCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMailCliente.Location = new System.Drawing.Point(81, 111);
             this.txtMailCliente.Name = "txtMailCliente";
-            this.txtMailCliente.Size = new System.Drawing.Size(181, 13);
+            this.txtMailCliente.Size = new System.Drawing.Size(181, 20);
             this.txtMailCliente.TabIndex = 23;
             // 
             // lblMailCliente
@@ -313,10 +318,10 @@
             // 
             // txtDireccionCliente
             // 
-            this.txtDireccionCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDireccionCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDireccionCliente.Location = new System.Drawing.Point(346, 111);
             this.txtDireccionCliente.Name = "txtDireccionCliente";
-            this.txtDireccionCliente.Size = new System.Drawing.Size(268, 13);
+            this.txtDireccionCliente.Size = new System.Drawing.Size(268, 20);
             this.txtDireccionCliente.TabIndex = 19;
             // 
             // lblDireccionCliente
@@ -332,10 +337,10 @@
             // 
             // txtTelefonoCliente
             // 
-            this.txtTelefonoCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTelefonoCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTelefonoCliente.Location = new System.Drawing.Point(502, 70);
             this.txtTelefonoCliente.Name = "txtTelefonoCliente";
-            this.txtTelefonoCliente.Size = new System.Drawing.Size(112, 13);
+            this.txtTelefonoCliente.Size = new System.Drawing.Size(112, 20);
             this.txtTelefonoCliente.TabIndex = 17;
             // 
             // lblTelefonoCliente
@@ -361,11 +366,11 @@
             // 
             // txtDV
             // 
-            this.txtDV.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDV.Enabled = false;
             this.txtDV.Location = new System.Drawing.Point(207, 63);
             this.txtDV.Name = "txtDV";
-            this.txtDV.Size = new System.Drawing.Size(35, 13);
+            this.txtDV.Size = new System.Drawing.Size(35, 20);
             this.txtDV.TabIndex = 13;
             this.txtDV.TextChanged += new System.EventHandler(this.txtDV_TextChanged);
             // 
@@ -382,10 +387,10 @@
             // 
             // txtRut
             // 
-            this.txtRut.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtRut.Location = new System.Drawing.Point(50, 63);
+            this.txtRut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRut.Location = new System.Drawing.Point(65, 62);
             this.txtRut.Name = "txtRut";
-            this.txtRut.Size = new System.Drawing.Size(112, 13);
+            this.txtRut.Size = new System.Drawing.Size(112, 20);
             this.txtRut.TabIndex = 11;
             // 
             // lblRutCliente
@@ -401,26 +406,26 @@
             // 
             // txtMaternoCliente
             // 
-            this.txtMaternoCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMaternoCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMaternoCliente.Location = new System.Drawing.Point(477, 24);
             this.txtMaternoCliente.Name = "txtMaternoCliente";
-            this.txtMaternoCliente.Size = new System.Drawing.Size(120, 13);
+            this.txtMaternoCliente.Size = new System.Drawing.Size(120, 20);
             this.txtMaternoCliente.TabIndex = 9;
             // 
             // txtPaternoCliente
             // 
-            this.txtPaternoCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPaternoCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPaternoCliente.Location = new System.Drawing.Point(286, 24);
             this.txtPaternoCliente.Name = "txtPaternoCliente";
-            this.txtPaternoCliente.Size = new System.Drawing.Size(120, 13);
+            this.txtPaternoCliente.Size = new System.Drawing.Size(120, 20);
             this.txtPaternoCliente.TabIndex = 8;
             // 
             // txtNombreCliente
             // 
-            this.txtNombreCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNombreCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombreCliente.Location = new System.Drawing.Point(63, 24);
             this.txtNombreCliente.Name = "txtNombreCliente";
-            this.txtNombreCliente.Size = new System.Drawing.Size(161, 13);
+            this.txtNombreCliente.Size = new System.Drawing.Size(161, 20);
             this.txtNombreCliente.TabIndex = 7;
             // 
             // lblMaternoCliente

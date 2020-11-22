@@ -46,5 +46,42 @@ namespace CapaDatos.Datos
 
         }
 
+
+        public List<eRubro> Listar()
+        {
+            List<eRubro> list = new List<eRubro>();
+            eRubro rubro = null;
+            OracleConnection conn = D_Conexion.conectar();
+
+            try {
+                OracleCommand command = conn.CreateCommand();
+                command.CommandText = "SP_SELECT_RUBRO";
+
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.Add(new OracleParameter("P_CURSOR", OracleDbType.RefCursor)).Direction = System.Data.ParameterDirection.Output;
+
+                using (OracleDataReader dr = command.ExecuteReader(System.Data.CommandBehavior.CloseConnection))
+                {
+                    while (dr.Read())
+                    {
+                        rubro = new eRubro();
+                        rubro.idRubro = Convert.ToInt32(dr["IDRUBRO"]);
+                        rubro.descripcionRubro = dr["IDRUBRO"].ToString();
+                        list.Add(rubro);
+                    }
+                }
+            }
+            catch (Exception ex) {
+
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
+            }
+
+            return list;
+        }
     }
 }

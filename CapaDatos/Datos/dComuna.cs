@@ -21,7 +21,7 @@ namespace CapaDatos.Datos
             try
             {
                 OracleCommand command = conn.CreateCommand();
-                command.CommandText = "select cmm.IDCOMUNA,cmm.NOMBRECOMUNA, cmm.IDCIUDAD from comuna cmm inner join ciudad cd on cd.idciudad = cmm.idciudad inner join region rg on rg.idregion = cd.idregion order by rg.idregion ";
+                command.CommandText = "select cmm.IDCOMUNA,cmm.NOMBRECOMUNA, cmm.IDCIUDAD, cd.idciudad,cd.nombreciudad, rg.idregion, rg.nombreregion from comuna cmm inner join ciudad cd on cd.idciudad = cmm.idciudad inner join region rg on rg.idregion = cd.idregion order by rg.idregion ";
 
                 OracleDataAdapter da = new OracleDataAdapter(command);
                 DataTable dt = new DataTable("Comunas");
