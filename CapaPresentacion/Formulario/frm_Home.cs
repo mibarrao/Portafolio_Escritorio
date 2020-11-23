@@ -233,12 +233,6 @@ namespace CapaPresentacion.Formulario
         {
             try
             {
-                /*CREAR USUARIO*/
-                eUsuario usu = new eUsuario();
-                D_Usuarios dusuario = new D_Usuarios();
-
-                usu.idTipoUsuario = '1';
-              //  usu.usuario = Left(txtNombreCliente.Text.Trim(), 1);
 
 
                 /*CREAR CLIENTE*/
@@ -262,6 +256,23 @@ namespace CapaPresentacion.Formulario
 
 
                 dcliente.creaCliente(cl);
+               
+                /*CREAR USUARIO*/
+                dClientes clientedao = new dClientes();
+                DataTable obtieneCL = clientedao.obtieneMaxCliente();
+
+                eUsuario usu = new eUsuario();
+                D_Usuarios dusuario = new D_Usuarios();
+
+
+                usu.idTipoUsuario = 2; //TipoUsuario: 1 Administrador - 2 Cliente
+                usu.usuario = txtNombreCliente.Text.Trim().Substring(0, 1) + '.' + txtPaternoCliente.Text.Trim() + txtMaternoCliente.Text.Trim().Substring(0, 1);
+                usu.clave = txtNombreCliente.Text.Trim  ().Substring(0, 1) + '.' + txtPaternoCliente.Text.Trim() + txtMaternoCliente.Text.Trim().Substring(0, 1) + txtRut.Text.Trim().Substring(0, 4);
+                usu.activo = 1;
+                usu.idcliente = int.Parse(obtieneCL.Rows[0]["idcliente"].ToString().Trim());
+                //int.Parse(obtieneCL.Rows[0]["idcliente"].ToString());
+
+                dusuario.creaUsuario(usu);
 
                 MessageBox.Show("El cliente se creado exitosamente.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

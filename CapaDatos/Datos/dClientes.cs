@@ -8,6 +8,7 @@ using CapaDatos.Conexion;
 using CapaDatos.Contract;
 using CapaEntidades.Entidades;
 using Oracle.DataAccess.Client;
+using System.Data;
 
 namespace CapaDatos.Datos
 {
@@ -56,6 +57,77 @@ namespace CapaDatos.Datos
                 cnn.Dispose();   
             }
         }
+
+        public DataTable obtieneMaxCliente()
+        {
+            OracleConnection cnn = D_Conexion.conectar();
+            try
+            {
+                OracleCommand command = cnn.CreateCommand();
+                command.CommandText = "select idcliente,nombre,appaterno,apmaterno,rut,dverificador,idrubro,direccion,codcomuna,codciudad,codregion,telefono,email from cliente where idcliente = (select max(idcliente) from cliente)";
+
+                OracleDataAdapter da = new OracleDataAdapter(command);
+                DataTable dt = new DataTable("Cliente");
+
+                da.Fill(dt);
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Se produjo un error en obtieneTipoUsuario" + ex.Message);
+            }
+            finally
+            {
+                cnn.Close();
+                cnn.Dispose();
+            }
+        }
+
+        public List<eCliente> getListaCliente()
+        {
+            OracleConnection conn = D_Conexion.conectar();
+            List<eCliente> listaCliente = new List<eCliente>();
+            try
+            {
+                OracleCommand command = conn.CreateCommand();
+                command.CommandText = "select idcliente,nombre,appaterno,apmaterno,rut,dverificador,idrubro,direccion,codcomuna,codciudad,codregion,telefono,email from cliente";
+                OracleDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                { 
+                    eCliente clienteGrid = new eCliente();
+                    clienteGrid.idcliente = int.Parse(reader["IDCLIENTE"].ToString());
+                    clienteGrid.nombre = reader["NOMBRE"].ToString();
+                    //usuarioGrid.estado = short.Parse(reader["ISACTIVO"].ToString()) == 1 ? "Activo" : "Inactivo";
+                    clienteGrid.apPaterno = reader["APPATERNO"].ToString().ToUpper();
+                    clienteGrid.apMaterno = reader["APMATERNO"].ToString().ToUpper();
+                    clienteGrid.rut = int.Parse(reader["RUT"].ToString());
+                    clienteGrid.dvVerificador = reader["DVVERIFICADOR"].ToString();
+                    clienteGrid.idRubro = int.Parse(reader["IDRUBRO"].ToString());
+                    clienteGrid.direccion = reader["DIRECCION"].ToString().ToUpper();
+                    clienteGrid.codComuna = int.Parse(reader["CODCOMUNA"].ToString());
+                    clienteGrid.codCiudad = int.Parse(reader["CODCIUDAD"].ToString());
+                    listaCliente.Add(clienteGrid);
+                }
+
+                command.Dispose();
+                reader.Close();
+                reader.Dispose();
+
+                return listaCliente;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
+            }
+        }
+
 
     }
 

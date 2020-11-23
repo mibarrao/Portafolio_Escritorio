@@ -14,7 +14,7 @@ namespace CapaEntidades.Entidades
         public int idTipoUsuario { get; set; }
         public string usuario { get; set; }
         public string clave { get; set; }
-        public Boolean activo{ get; set; }
+        public int activo{ get; set; }
         public int idcliente { get; set; }
         public int idprofesional { get; set; }
 

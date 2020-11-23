@@ -60,7 +60,7 @@ namespace CapaDatos.Datos
                     usu.idTipoUsuario = int.Parse(dr["IDTIPOUSUARIO"].ToString());
                     usu.usuario = (string)dr["USUARIO"];
                     usu.clave = (string)dr["CLAVE"];
-                    usu.activo = bool.Parse(dr["ACTIVO"].ToString());
+                    usu.activo = int.Parse(dr["ACTIVO"].ToString());
                     usu.idcliente = int.Parse(dr["IDCLIENTE"].ToString());
                     usu.idprofesional = int.Parse(dr["IDPROFESIONAL"].ToString());
                 }
@@ -93,7 +93,7 @@ namespace CapaDatos.Datos
                 command.Parameters.Add("clave", OracleDbType.Varchar2).Value = usu.clave;
                 command.Parameters.Add("activo", OracleDbType.Int32).Value = usu.activo;
                 command.Parameters.Add("idcliente", OracleDbType.Varchar2).Value = usu.idcliente;
-                command.Parameters.Add("idprofesional", OracleDbType.Int32).Value = usu.idprofesional;
+                command.Parameters.Add("idprofesional", OracleDbType.Int32).Value = null;
                
                 command.ExecuteNonQuery();
                 command.Dispose();
