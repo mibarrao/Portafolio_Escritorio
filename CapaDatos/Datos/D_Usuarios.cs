@@ -38,8 +38,6 @@ namespace CapaDatos.Datos
 
         }
 
-
-
         public eUsuario GetUsuario(string usuario, string clave)
         {
             
@@ -81,9 +79,37 @@ namespace CapaDatos.Datos
                 conn.Dispose();
             }
         }
-        
 
-      
+
+        public void creaUsuario(eUsuario usu)
+        {
+            OracleConnection cnn = D_Conexion.conectar();
+            try
+            {
+                OracleCommand command = new OracleCommand("SP_INSERTAUSUARIO", cnn);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.Add("idtpousuario", OracleDbType.Varchar2).Value = usu.idTipoUsuario;
+                command.Parameters.Add("usuario", OracleDbType.Varchar2).Value = usu.usuario;
+                command.Parameters.Add("clave", OracleDbType.Varchar2).Value = usu.clave;
+                command.Parameters.Add("activo", OracleDbType.Int32).Value = usu.activo;
+                command.Parameters.Add("idcliente", OracleDbType.Varchar2).Value = usu.idcliente;
+                command.Parameters.Add("idprofesional", OracleDbType.Int32).Value = usu.idprofesional;
+               
+                command.ExecuteNonQuery();
+                command.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                cnn.Close();
+                cnn.Dispose();
+            }
+        }
+
 
     }
 }

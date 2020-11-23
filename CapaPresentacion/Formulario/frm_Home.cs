@@ -82,6 +82,56 @@ namespace CapaPresentacion.Formulario
             }
         }
 
+        void pValidaNumeros(KeyPressEventArgs e)
+        {
+            try
+            {
+                //Si es digito lo permite escribir
+                if (Char.IsNumber(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                //Si es tecla delete lo permite
+                else if (Char.IsControl(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        void pValidaLetras(KeyPressEventArgs e)
+        {
+            try
+            {
+                //Si es digito lo permite escribir
+                if (Char.IsLetter(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                //Si es tecla delete lo permite
+                else if (Char.IsControl(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
 
 
         /*******************************************************************/
@@ -183,6 +233,14 @@ namespace CapaPresentacion.Formulario
         {
             try
             {
+                /*CREAR USUARIO*/
+                eUsuario usu = new eUsuario();
+                D_Usuarios dusuario = new D_Usuarios();
+
+                usu.idTipoUsuario = '1';
+              //  usu.usuario = Left(txtNombreCliente.Text.Trim(), 1);
+
+
                 /*CREAR CLIENTE*/
                 eCliente cl = new eCliente();
                 dClientes dcliente = new dClientes();
@@ -223,6 +281,33 @@ namespace CapaPresentacion.Formulario
         {
          
             
+
+        }
+
+        private void txtRut_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            pValidaNumeros(e);
+        }
+
+        private void txtTelefonoCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            pValidaNumeros(e);
+        }
+
+        private void txtNombreCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            pValidaLetras(e);
+        }
+
+        private void txtPaternoCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            pValidaLetras(e);
+
+        }
+
+        private void txtMaternoCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            pValidaLetras(e);
 
         }
     }
