@@ -12,6 +12,7 @@ using Oracle.DataAccess.Client;
 using CapaEntidades.Entidades;
 using CapaDatos.Datos;
 
+
 namespace CapaPresentacion.Formulario
 {
     public partial class frm_Home : Form
@@ -174,17 +175,55 @@ namespace CapaPresentacion.Formulario
 
         private void txtDV_TextChanged(object sender, EventArgs e)
         {
+ 
             pCalculaDV(int.Parse(txtRut.Text));
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                /*CREAR CLIENTE*/
+                eCliente cl = new eCliente();
+                dClientes dcliente = new dClientes();
+                pCalculaDV(int.Parse(txtRut.Text));
 
+
+                cl.nombre = txtNombreCliente.Text.Trim();
+                cl.apPaterno = txtPaternoCliente.Text.Trim();
+                cl.apMaterno = txtMaternoCliente.Text.Trim();
+                cl.rut = int.Parse(txtRut.Text.Trim());
+                cl.dvVerificador = txtDV.Text.Trim();
+                cl.idRubro = int.Parse(cbRubro.SelectedValue.ToString());
+                cl.direccion = txtDireccionCliente.Text.Trim();
+                cl.codComuna = int.Parse(cbComuna.SelectedValue.ToString());
+                cl.codCiudad = int.Parse(cbCiudad.SelectedValue.ToString());
+                cl.codRegion = int.Parse(cbRegion.SelectedValue.ToString());
+                cl.telefono = int.Parse(txtTelefonoCliente.Text.Trim());
+                cl.email = txtMailCliente.Text.Trim();
+
+
+                dcliente.creaCliente(cl);
+
+                MessageBox.Show("El cliente se creado exitosamente.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //this.Dispose();
         }
+            catch (Exception ex)
+            { 
+                MessageBox.Show("Error: Ha ocurrido un error al crear el usuario. "+ex,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+
+
+}
 
         private void cbComuna_SelectedIndexChanged(object sender, EventArgs e)
         {
+         
             
+
         }
     }
 }
