@@ -133,6 +133,36 @@ namespace CapaPresentacion.Formulario
         }
 
 
+        void pEnviaCorreo(string para, string usuario, string clave)
+        {
+            System.Net.Mail.MailMessage mmsg = new System.Net.Mail.MailMessage();
+
+            mmsg.To.Add(para);
+            mmsg.Subject = "CREACION USUARIO PIMA SOLUCIONES";
+            mmsg.SubjectEncoding = System.Text.Encoding.UTF8;
+
+            mmsg.Body = "Estimado/a, \n Se adjuntan las credenciales para acceder al sistema de Pima Soluciones. \n \n Usuario: " + usuario + "\n Clave: "+clave;
+            mmsg.BodyEncoding = System.Text.Encoding.UTF8;
+            mmsg.IsBodyHtml = false;
+
+            mmsg.From = new System.Net.Mail.MailAddress("contacto@lumostintapapel.cl");
+            System.Net.Mail.SmtpClient cliente = new System.Net.Mail.SmtpClient();
+            cliente.Credentials = new System.Net.NetworkCredential("contacto@lumostintapapel.cl", "Slytherin250");
+            cliente.Port = 26;
+            cliente.EnableSsl = false;
+            cliente.Host = "mail.lumostintapapel.cl"; //mail.dominio.com
+
+            try
+            {
+                cliente.Send(mmsg);
+                MessageBox.Show("Se ha realizado el envío de correo correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido realizar el envío de correo "+ ex.Message);
+            }
+        }
+
 
         /*******************************************************************/
         private void sALIRToolStripMenuItem_Click(object sender, EventArgs e)
@@ -277,14 +307,14 @@ namespace CapaPresentacion.Formulario
                 MessageBox.Show("El cliente se creado exitosamente.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 //this.Dispose();
+                /*ENVIA CORREO CON CREDENCIALES DE USUARIO*/
+
+                pEnviaCorreo(txtMailCliente.Text,usu.usuario,usu.clave);
         }
             catch (Exception ex)
             { 
                 MessageBox.Show("Error: Ha ocurrido un error al crear el usuario. "+ex,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
-
 
 }
 
