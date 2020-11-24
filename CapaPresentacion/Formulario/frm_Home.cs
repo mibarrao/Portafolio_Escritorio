@@ -178,25 +178,65 @@ namespace CapaPresentacion.Formulario
 
         private void btnIngresa_Click(object sender, EventArgs e)
         {
-            pnlIngresar.Visible = true;
+
+            tbControlMantenedor.Visible = true;
+            if (tbIngresaCliente.Parent == null)
+            {
+                // 0 es el index por la primera pestana
+                tbControlMantenedor.TabPages.Insert(0, tbIngresaCliente);
+            }
+            tbActualizaCliente.Parent = null;
+            tbEliminaCliente.Parent = null;
+            tbListaCliente.Parent = null;
+         
+
+
+            /*
+              Cuerpo.TabPages.Add(_Cuerpo_FinNC)
+                    Cuerpo.TabPages.Item(0).Parent = Nothing
+                    guardarPantallaAnterior(1)
+             */
         }
 
         private void btnElimina_Click(object sender, EventArgs e)
         {
-            pnlIngresar.Visible = false;
+            if (tbEliminaCliente.Parent == null)
+            {
+                // 0 es el index por la primera pestana
+                tbControlMantenedor.TabPages.Insert(0, tbEliminaCliente);
+            }
+            tbControlMantenedor.Visible = true;
+            tbActualizaCliente.Parent = null;
+            tbIngresaCliente.Parent = null;
+            tbListaCliente.Parent = null;
 
         }
 
         private void btnLista_Click(object sender, EventArgs e)
         {
-            pnlIngresar.Visible = false;
-
+            if (tbListaCliente.Parent == null)
+            {
+                // 1 es el index por la segunda pestana
+                tbControlMantenedor.TabPages.Insert(1, tbListaCliente);
+            }
+            tbControlMantenedor.Visible = true;
+            tbActualizaCliente.Parent = null;
+            tbIngresaCliente.Parent = null;
+            tbEliminaCliente.Parent = null;
         }
 
         private void btnActualiza_Click(object sender, EventArgs e)
         {
-            pnlIngresar.Visible = false;
-            
+            if (tbActualizaCliente.Parent == null)
+            {
+                // 3 es el index por la cuarta pestana
+                tbControlMantenedor.TabPages.Insert(0, tbActualizaCliente);
+            }
+            tbControlMantenedor.Visible = true;
+            tbListaCliente.Parent = null;
+            tbIngresaCliente.Parent = null;
+            tbEliminaCliente.Parent = null;
+
 
         }
 

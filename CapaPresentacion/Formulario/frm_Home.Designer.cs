@@ -72,10 +72,23 @@
             this.btnElimina = new System.Windows.Forms.Button();
             this.btnLista = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.tbControlMantenedor = new System.Windows.Forms.TabControl();
+            this.tbIngresaCliente = new System.Windows.Forms.TabPage();
+            this.tbListaCliente = new System.Windows.Forms.TabPage();
+            this.tbEliminaCliente = new System.Windows.Forms.TabPage();
+            this.tbActualizaCliente = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.grxMantenedorCliente.SuspendLayout();
             this.pnlIngresar.SuspendLayout();
+            this.tbControlMantenedor.SuspendLayout();
+            this.tbIngresaCliente.SuspendLayout();
+            this.tbListaCliente.SuspendLayout();
+            this.tbEliminaCliente.SuspendLayout();
+            this.tbActualizaCliente.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -121,14 +134,14 @@
             // ClienteMantenedor
             // 
             this.ClienteMantenedor.Name = "ClienteMantenedor";
-            this.ClienteMantenedor.Size = new System.Drawing.Size(186, 26);
+            this.ClienteMantenedor.Size = new System.Drawing.Size(224, 26);
             this.ClienteMantenedor.Text = "CLIENTE";
             this.ClienteMantenedor.Click += new System.EventHandler(this.ClienteMantenedor_Click);
             // 
             // ProfesionalMantenedor
             // 
             this.ProfesionalMantenedor.Name = "ProfesionalMantenedor";
-            this.ProfesionalMantenedor.Size = new System.Drawing.Size(186, 26);
+            this.ProfesionalMantenedor.Size = new System.Drawing.Size(224, 26);
             this.ProfesionalMantenedor.Text = "PROFESIONAL";
             // 
             // cLIENTEToolStripMenuItem1
@@ -167,7 +180,7 @@
             // grxMantenedorCliente
             // 
             this.grxMantenedorCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.grxMantenedorCliente.Controls.Add(this.pnlIngresar);
+            this.grxMantenedorCliente.Controls.Add(this.tbControlMantenedor);
             this.grxMantenedorCliente.Controls.Add(this.btnIngresa);
             this.grxMantenedorCliente.Controls.Add(this.btnActualiza);
             this.grxMantenedorCliente.Controls.Add(this.btnElimina);
@@ -210,12 +223,11 @@
             this.pnlIngresar.Controls.Add(this.lblMaternoCliente);
             this.pnlIngresar.Controls.Add(this.lblPaternoCliente);
             this.pnlIngresar.Controls.Add(this.lblNombreCliente);
-            this.pnlIngresar.Location = new System.Drawing.Point(7, 81);
+            this.pnlIngresar.Location = new System.Drawing.Point(12, 7);
             this.pnlIngresar.Margin = new System.Windows.Forms.Padding(4);
             this.pnlIngresar.Name = "pnlIngresar";
-            this.pnlIngresar.Size = new System.Drawing.Size(937, 295);
+            this.pnlIngresar.Size = new System.Drawing.Size(902, 292);
             this.pnlIngresar.TabIndex = 25;
-            this.pnlIngresar.Visible = false;
             // 
             // cbRegion
             // 
@@ -499,7 +511,7 @@
             this.btnIngresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIngresa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIngresa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnIngresa.Location = new System.Drawing.Point(191, 23);
+            this.btnIngresa.Location = new System.Drawing.Point(240, 23);
             this.btnIngresa.Margin = new System.Windows.Forms.Padding(4);
             this.btnIngresa.Name = "btnIngresa";
             this.btnIngresa.Size = new System.Drawing.Size(119, 28);
@@ -514,7 +526,7 @@
             this.btnActualiza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActualiza.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualiza.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnActualiza.Location = new System.Drawing.Point(535, 25);
+            this.btnActualiza.Location = new System.Drawing.Point(584, 25);
             this.btnActualiza.Margin = new System.Windows.Forms.Padding(4);
             this.btnActualiza.Name = "btnActualiza";
             this.btnActualiza.Size = new System.Drawing.Size(133, 26);
@@ -530,7 +542,7 @@
             this.btnElimina.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnElimina.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnElimina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnElimina.Location = new System.Drawing.Point(425, 23);
+            this.btnElimina.Location = new System.Drawing.Point(474, 23);
             this.btnElimina.Margin = new System.Windows.Forms.Padding(4);
             this.btnElimina.Name = "btnElimina";
             this.btnElimina.Size = new System.Drawing.Size(101, 28);
@@ -545,7 +557,7 @@
             this.btnLista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLista.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnLista.Location = new System.Drawing.Point(317, 23);
+            this.btnLista.Location = new System.Drawing.Point(366, 23);
             this.btnLista.Margin = new System.Windows.Forms.Padding(4);
             this.btnLista.Name = "btnLista";
             this.btnLista.Size = new System.Drawing.Size(100, 28);
@@ -553,6 +565,89 @@
             this.btnLista.Text = "LISTAR";
             this.btnLista.UseVisualStyleBackColor = false;
             this.btnLista.Click += new System.EventHandler(this.btnLista_Click);
+            // 
+            // tbControlMantenedor
+            // 
+            this.tbControlMantenedor.Controls.Add(this.tbIngresaCliente);
+            this.tbControlMantenedor.Controls.Add(this.tbListaCliente);
+            this.tbControlMantenedor.Controls.Add(this.tbEliminaCliente);
+            this.tbControlMantenedor.Controls.Add(this.tbActualizaCliente);
+            this.tbControlMantenedor.Location = new System.Drawing.Point(8, 58);
+            this.tbControlMantenedor.Name = "tbControlMantenedor";
+            this.tbControlMantenedor.SelectedIndex = 0;
+            this.tbControlMantenedor.Size = new System.Drawing.Size(937, 335);
+            this.tbControlMantenedor.TabIndex = 26;
+            this.tbControlMantenedor.Visible = false;
+            // 
+            // tbIngresaCliente
+            // 
+            this.tbIngresaCliente.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.tbIngresaCliente.Controls.Add(this.pnlIngresar);
+            this.tbIngresaCliente.Location = new System.Drawing.Point(4, 25);
+            this.tbIngresaCliente.Name = "tbIngresaCliente";
+            this.tbIngresaCliente.Padding = new System.Windows.Forms.Padding(3);
+            this.tbIngresaCliente.Size = new System.Drawing.Size(929, 306);
+            this.tbIngresaCliente.TabIndex = 0;
+            this.tbIngresaCliente.Text = "Ingresar";
+            this.tbIngresaCliente.UseVisualStyleBackColor = true;
+            // 
+            // tbListaCliente
+            // 
+            this.tbListaCliente.Controls.Add(this.button1);
+            this.tbListaCliente.Location = new System.Drawing.Point(4, 25);
+            this.tbListaCliente.Name = "tbListaCliente";
+            this.tbListaCliente.Padding = new System.Windows.Forms.Padding(3);
+            this.tbListaCliente.Size = new System.Drawing.Size(929, 306);
+            this.tbListaCliente.TabIndex = 1;
+            this.tbListaCliente.Text = "Listar";
+            this.tbListaCliente.UseVisualStyleBackColor = true;
+            // 
+            // tbEliminaCliente
+            // 
+            this.tbEliminaCliente.Controls.Add(this.button2);
+            this.tbEliminaCliente.Location = new System.Drawing.Point(4, 25);
+            this.tbEliminaCliente.Name = "tbEliminaCliente";
+            this.tbEliminaCliente.Size = new System.Drawing.Size(929, 306);
+            this.tbEliminaCliente.TabIndex = 2;
+            this.tbEliminaCliente.Text = "Eliminar";
+            this.tbEliminaCliente.UseVisualStyleBackColor = true;
+            // 
+            // tbActualizaCliente
+            // 
+            this.tbActualizaCliente.Controls.Add(this.button3);
+            this.tbActualizaCliente.Location = new System.Drawing.Point(4, 25);
+            this.tbActualizaCliente.Name = "tbActualizaCliente";
+            this.tbActualizaCliente.Size = new System.Drawing.Size(929, 306);
+            this.tbActualizaCliente.TabIndex = 3;
+            this.tbActualizaCliente.Text = "Actualizar";
+            this.tbActualizaCliente.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(120, 109);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "LISTA";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(177, 160);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "ELIMINA";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(203, 169);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "ACTUALIZA";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // frm_Home
             // 
@@ -574,6 +669,11 @@
             this.grxMantenedorCliente.ResumeLayout(false);
             this.pnlIngresar.ResumeLayout(false);
             this.pnlIngresar.PerformLayout();
+            this.tbControlMantenedor.ResumeLayout(false);
+            this.tbIngresaCliente.ResumeLayout(false);
+            this.tbListaCliente.ResumeLayout(false);
+            this.tbEliminaCliente.ResumeLayout(false);
+            this.tbActualizaCliente.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -623,5 +723,13 @@
         private System.Windows.Forms.ComboBox cbCiudad;
         private System.Windows.Forms.ComboBox cbComuna;
         private System.Windows.Forms.ComboBox cbRubro;
+        private System.Windows.Forms.TabControl tbControlMantenedor;
+        private System.Windows.Forms.TabPage tbIngresaCliente;
+        private System.Windows.Forms.TabPage tbListaCliente;
+        private System.Windows.Forms.TabPage tbEliminaCliente;
+        private System.Windows.Forms.TabPage tbActualizaCliente;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
