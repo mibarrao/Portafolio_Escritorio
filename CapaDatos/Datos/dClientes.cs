@@ -14,15 +14,6 @@ namespace CapaDatos.Datos
 {
    public class dClientes 
     {
-        //    public string actualizar(eCliente dto)
-        //    {
-        //        string resultado = string.Empty;
-        //        try {
-        //            conectar();
-        //            using (OracleCommand command = new OracleCommand("SP_UPDATE_CLIENTE",conectar()))
-        //        }
-        //        catch(Exception ex)
-        //    }
 
         public void creaCliente(eCliente cl)
         {
@@ -108,7 +99,10 @@ namespace CapaDatos.Datos
                     clienteGrid.direccion = reader["DIRECCION"].ToString().ToUpper();
                     clienteGrid.codComuna = int.Parse(reader["CODCOMUNA"].ToString());
                     clienteGrid.codCiudad = int.Parse(reader["CODCIUDAD"].ToString());
-                    
+                    clienteGrid.codRegion = int.Parse(reader["CODREGION"].ToString());
+                    clienteGrid.telefono = int.Parse(reader["TELEFONO"].ToString());
+                    clienteGrid.email = reader["EMAIL"].ToString();
+
                     listaCliente.Add(clienteGrid);
                 }
 
@@ -121,6 +115,46 @@ namespace CapaDatos.Datos
             catch (Exception e)
             {
                 throw new Exception(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
+            }
+        }
+
+        public void editaCliente(eCliente cl)
+        {
+            OracleConnection conn = D_Conexion.conectar();
+            string result = string.Empty;
+
+            try
+            {
+                OracleCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "SP_UPDATE_CLIENTE";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("p_idCliente", OracleDbType.Int32).Value = cl.idcliente;
+                cmd.Parameters.Add("p_nombre", OracleDbType.Int32).Value = cl.nombre;
+                cmd.Parameters.Add("p_apPaterno", OracleDbType.Varchar2).Value = cl.apPaterno;
+                cmd.Parameters.Add("p_apMaterno", OracleDbType.Varchar2).Value = cl.apMaterno;
+                cmd.Parameters.Add("p_rut", OracleDbType.Varchar2).Value = cl.rut;
+                cmd.Parameters.Add("p_dvVerificador", OracleDbType.Varchar2).Value = cl.dvVerificador;
+                cmd.Parameters.Add("p_idrubro", OracleDbType.Varchar2).Value = cl.idRubro;
+                cmd.Parameters.Add("p_direccion", OracleDbType.Varchar2).Value = cl.direccion;
+                cmd.Parameters.Add("p_codcomuna", OracleDbType.Varchar2).Value = cl.codComuna;
+                cmd.Parameters.Add("p_codciudad", OracleDbType.Int16).Value = cl.codCiudad;
+                cmd.Parameters.Add("p_codregion", OracleDbType.Int32).Value = cl.codRegion;
+                cmd.Parameters.Add("P_TELEFONO", OracleDbType.Int32).Value = cl.telefono;
+                cmd.Parameters.Add("P_email", OracleDbType.Varchar2).Value = cl.email;
+                
+                cmd.ExecuteNonQuery();
+                result = Convert.ToString(cmd.Parameters["P_RESULT"].Value);
+                cmd.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
             finally
             {

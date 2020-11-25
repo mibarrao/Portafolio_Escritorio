@@ -223,6 +223,36 @@ namespace CapaPresentacion.Formulario
         private void btnLista_Click(object sender, EventArgs e)
         {
 
+            //PRECARGAR REGION, COMUNA,CIUDAD Y REGION
+            /*CARGA CB RUBROS*/
+            dRubro rubrodao = new dRubro();
+            DataTable drubro = rubrodao.obtieneRubros();
+
+            this.cbRubro.DataSource = drubro;
+            this.cbRubro.DisplayMember = "descripcionrubro";
+            this.cbRubro.ValueMember = "idrubro";
+
+
+            /*CARGA CB COMUNA*/
+            dComuna comunadao = new dComuna();
+            DataTable dcomuna = comunadao.obtieneComunacb();
+
+            this.cbComuna.DataSource = dcomuna;
+            this.cbComuna.DisplayMember = "nombrecomuna";
+            this.cbComuna.ValueMember = "idcomuna";
+
+            /*CARGA CB CIUDAD*/
+
+            this.cbCiudad.DataSource = dcomuna;
+            this.cbCiudad.DisplayMember = "nombreciudad";
+            this.cbCiudad.ValueMember = "idciudad";
+
+            /*CARGA CB REGION*/
+
+            this.cbRegion.DataSource = dcomuna;
+            this.cbRegion.DisplayMember = "nombreregion";
+            this.cbRegion.ValueMember = "idregion";
+
             if (tbListaCliente.Parent == null)
             {
                 // 1 es el index por la segunda pestana
@@ -263,7 +293,14 @@ namespace CapaPresentacion.Formulario
             tbIngresaCliente.Parent = null;
             tbEliminaCliente.Parent = null;
 
-
+            if (this.dgvListaCliente.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Error: Debe seleccionar un usuario para Editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            { 
+                
+            }
         }
 
         private void MantenedorToolStripMenuItem_Click(object sender, EventArgs e)
@@ -442,6 +479,35 @@ namespace CapaPresentacion.Formulario
             {
                 txtNombreEliminaCliente.Enabled = false;
             }
+        }
+
+        private void dgvListaCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            return;
+        }
+
+        private void dgvListaCliente_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //txtNombreClienteListar.Text = dgvListaCliente.CurrentRow.Cells[e.RowIndex].Value;
+            pnlActualiza.Visible = true;
+
+            {
+                int i;
+                i = dgvListaCliente.SelectedCells[0].RowIndex;
+                txtNombreClienteListar.Text = dgvListaCliente.Rows[i].Cells[1].Value.ToString();
+                txtPaternoClienteListar.Text = dgvListaCliente.Rows[i].Cells[2].Value.ToString();
+                txtMaternoClienteListar.Text = dgvListaCliente.Rows[i].Cells[3].Value.ToString();
+                
+                txtRutListar.Text = dgvListaCliente.Rows[i].Cells[4].Value.ToString();
+                txtDvListar.Text = dgvListaCliente.Rows[i].Cells[5].Value.ToString();
+                txtTelefonoClienteListar.Text = dgvListaCliente.Rows[i].Cells[11].Value.ToString();
+               // txtEmailClienteListar.Text = dgvListaCliente.Rows[i].Cells[12].Value.ToString();
+               // txtDireccionClienteListar.Text = dgvListaCliente.Rows[i].Cells[7].Value.ToString();
+
+
+            }
+
+
         }
     }
 }
