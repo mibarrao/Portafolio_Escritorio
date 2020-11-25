@@ -91,7 +91,7 @@ namespace CapaDatos.Datos
             try
             {
                 OracleCommand command = conn.CreateCommand();
-                command.CommandText = "select idcliente,nombre,appaterno,apmaterno,rut,dverificador,idrubro,direccion,codcomuna,codciudad,codregion,telefono,email from cliente";
+                command.CommandText = "select idcliente,nombre,appaterno,apmaterno,rut,dverificador,idrubro,direccion,codcomuna,codciudad,codregion,telefono,email  from cliente cl inner join comuna cm on cm.idcomuna = cl.codcomuna inner join ciudad cd on cd.idciudad = cm.idciudad inner join region rg on rg.idregion = cd.idregion";
                 OracleDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -103,11 +103,12 @@ namespace CapaDatos.Datos
                     clienteGrid.apPaterno = reader["APPATERNO"].ToString().ToUpper();
                     clienteGrid.apMaterno = reader["APMATERNO"].ToString().ToUpper();
                     clienteGrid.rut = int.Parse(reader["RUT"].ToString());
-                    clienteGrid.dvVerificador = reader["DVVERIFICADOR"].ToString();
+                    clienteGrid.dvVerificador = reader["dverificador"].ToString();
                     clienteGrid.idRubro = int.Parse(reader["IDRUBRO"].ToString());
                     clienteGrid.direccion = reader["DIRECCION"].ToString().ToUpper();
                     clienteGrid.codComuna = int.Parse(reader["CODCOMUNA"].ToString());
                     clienteGrid.codCiudad = int.Parse(reader["CODCIUDAD"].ToString());
+                    
                     listaCliente.Add(clienteGrid);
                 }
 

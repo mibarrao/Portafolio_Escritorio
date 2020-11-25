@@ -17,6 +17,8 @@ namespace CapaPresentacion.Formulario
 {
     public partial class frm_Home : Form
     {
+        private BindingList<eCliente> listaCl;
+
         public frm_Home()
         {
             InitializeComponent();
@@ -163,6 +165,12 @@ namespace CapaPresentacion.Formulario
             }
         }
 
+        private void pValidaCamposGuardaCliente() {
+
+
+            MessageBox.Show("Falta por llenar campos");
+        }
+
 
         /*******************************************************************/
         private void sALIRToolStripMenuItem_Click(object sender, EventArgs e)
@@ -214,6 +222,7 @@ namespace CapaPresentacion.Formulario
 
         private void btnLista_Click(object sender, EventArgs e)
         {
+
             if (tbListaCliente.Parent == null)
             {
                 // 1 es el index por la segunda pestana
@@ -223,6 +232,23 @@ namespace CapaPresentacion.Formulario
             tbActualizaCliente.Parent = null;
             tbIngresaCliente.Parent = null;
             tbEliminaCliente.Parent = null;
+
+            try {
+                dClientes dcliente = new dClientes();
+
+                List<eCliente> listaCliente = new List<eCliente>();
+
+                listaCliente.AddRange(dcliente.getListaCliente());
+
+                listaCl = new BindingList<eCliente>(listaCliente);
+                this.dgvListaCliente.DataSource = listaCl;
+                this.Focus();
+            }
+            catch (Exception ex) 
+            { 
+                MessageBox.Show("Error al cargar la lista "+ex.Message,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void btnActualiza_Click(object sender, EventArgs e)
@@ -390,6 +416,32 @@ namespace CapaPresentacion.Formulario
         {
             pValidaLetras(e);
 
+        }
+
+        private void chxbRutEliminaCliente_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chxbRutEliminaCliente.Checked == true)
+            {
+                txtRutEliminaCliente.Enabled = true;
+                txtNombreEliminaCliente.Enabled = false;
+            }
+            else
+            {
+                txtRutEliminaCliente.Enabled = false;
+            }
+        }
+
+        private void chxbNombreEliminaCliente_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chxbNombreEliminaCliente.Checked == true)
+            {
+                txtRutEliminaCliente.Enabled = false;
+                txtNombreEliminaCliente.Enabled = true;
+            }
+            else
+            {
+                txtNombreEliminaCliente.Enabled = false;
+            }
         }
     }
 }
