@@ -11,7 +11,14 @@ using CapaDatos.Conexion;
 using Oracle.DataAccess.Client;
 using CapaEntidades.Entidades;
 using CapaDatos.Datos;
-
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Kernel;
+using iText.Kernel.Geom;
+using iText.Kernel.Font;
+using iText.IO.Font.Constants;
+using iText.Layout.Element;
+using iText.Layout.Properties;
 
 namespace CapaPresentacion.Formulario
 {
@@ -82,6 +89,14 @@ namespace CapaPresentacion.Formulario
                     //return suma.ToString();
                 }
             }
+        }
+
+        void pMantenedorFalse()
+        {
+            grxMantenedorCliente.Visible = false;
+            btnLista.Visible = false;
+            btnElimina.Visible = false;
+            btnIngresa.Visible = false;
         }
 
         void pValidaNumeros(KeyPressEventArgs e)
@@ -208,6 +223,7 @@ namespace CapaPresentacion.Formulario
 
         private void btnElimina_Click(object sender, EventArgs e)
         {
+            pnlActualiza.Visible = true;
             if (tbEliminaCliente.Parent == null)
             {
                 // 0 es el index por la primera pestana
@@ -312,17 +328,22 @@ namespace CapaPresentacion.Formulario
 
         private void cLIENTEToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-             grxMantenedorCliente.Visible = false;
+            pMantenedorFalse();
         }
 
         private void InformesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            grxMantenedorCliente.Visible = false;
+            pMantenedorFalse();
+
         }
 
         private void ClienteMantenedor_Click(object sender, EventArgs e)
         {
             grxMantenedorCliente.Visible = true;
+            btnLista.Visible = true;
+            btnElimina.Visible = true;
+            btnIngresa.Visible = true;
+
 
             /*CARGA CB RUBROS*/
             dRubro rubrodao = new dRubro();
@@ -596,5 +617,91 @@ namespace CapaPresentacion.Formulario
                 MessageBox.Show("Error al eliminar producto.", ex.Message);
             }
         }
+
+        private void ProfesionalMantenedor_Click(object sender, EventArgs e)
+        {
+            grxMantenedorCliente.Text = "PROFESIONAL";
+        }
+
+        private void cLIENTEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            grxMantenedorCliente.Text = "MANTENEDOR - CLIENTE";
+            grxMantenedorCliente.Visible = true;
+
+
+            tbControlMantenedor.Visible = true;
+            if (tbControlMantenedor.Parent == null)
+            {
+                // 0 es el index por la primera pestana
+                tbControlMantenedor.TabPages.Insert(0, tbInfomeCliente);
+            }
+            tbIngresaCliente.Parent = null;
+            tbActualizaCliente.Parent = null;
+            tbEliminaCliente.Parent = null;
+            tbListaCliente.Parent = null;
+
+        }
+
+        private void btnDescargaListadoCliente_Click(object sender, EventArgs e)
+        {
+            dClientes creapdf = new dClientes();
+
+            creapdf.creaPdf();
+
+        }
+
+        /* private void creaPdf()
+         {
+             DateTime fecha = DateTime.Now;
+             string fechaActual = fecha.ToString("dd-MM-yyyy");
+             //string ruta = 'C:\Users\M.ibarraO\Documents\DUOC\Aplicaciones\GeneraPDF\Listado_ClienteActual_' + fechaActual+'.pdf';
+
+             PdfWriter pdfwriter = new PdfWriter("Listado_ClienteActual_"+ fechaActual + ".pdf");
+             //Crear documento
+             PdfDocument pdf = new PdfDocument(pdfwriter);
+             Document documento = new Document(pdf,PageSize.LETTER);
+
+             documento.SetMargins(60,20,55,20);
+
+             PdfFont fontColumnas = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
+             PdfFont fontContenido = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
+
+             string[] columnas = { "idcliente", "nombre", "paterno", "materno", "rut", "dvs", "idrubro", "direccion", "codcomuna", "ciudad", "region", "telefono", "mail" };
+             float[] tamanios = {5,50,50,50,10,1,4,100,10,10,10,50,50 };
+
+             Table tabla = new Table(UnitValue.CreatePercentArray(tamanios));
+             tabla.SetWidth(UnitValue.CreatePercentValue(100));
+
+             foreach (string columna in columnas)
+             {
+                 tabla.AddHeaderCell(new Cell().Add(new Paragraph(columna).SetFont(fontColumnas)));
+             }
+
+             //Cargardatos en TablaPDF
+             int i;
+             i = dgvListaCliente.SelectedCells[0].RowIndex;
+
+             tabla.AddCell(new Cell().Add(new Paragraph(dgvListaCliente.Rows[i].Cells[0].Value.ToString()).SetFont(fontContenido)));
+             tabla.AddCell(new Cell().Add(new Paragraph(dgvListaCliente.Rows[i].Cells[1].Value.ToString()).SetFont(fontContenido))) ;
+             tabla.AddCell(new Cell().Add(new Paragraph(dgvListaCliente.Rows[i].Cells[2].Value.ToString()).SetFont(fontContenido)));
+             tabla.AddCell(new Cell().Add(new Paragraph(dgvListaCliente.Rows[i].Cells[3].Value.ToString()).SetFont(fontContenido)));
+             tabla.AddCell(new Cell().Add(new Paragraph(dgvListaCliente.Rows[i].Cells[4].Value.ToString()).SetFont(fontContenido)));
+             tabla.AddCell(new Cell().Add(new Paragraph(dgvListaCliente.Rows[i].Cells[5].Value.ToString()).SetFont(fontContenido)));
+             tabla.AddCell(new Cell().Add(new Paragraph(dgvListaCliente.Rows[i].Cells[6].Value.ToString()).SetFont(fontContenido)));
+             tabla.AddCell(new Cell().Add(new Paragraph(dgvListaCliente.Rows[i].Cells[7].Value.ToString()).SetFont(fontContenido)));
+             tabla.AddCell(new Cell().Add(new Paragraph(dgvListaCliente.Rows[i].Cells[8].Value.ToString()).SetFont(fontContenido)));
+             tabla.AddCell(new Cell().Add(new Paragraph(dgvListaCliente.Rows[i].Cells[9].Value.ToString()).SetFont(fontContenido)));
+             tabla.AddCell(new Cell().Add(new Paragraph(dgvListaCliente.Rows[i].Cells[10].Value.ToString()).SetFont(fontContenido)));
+             tabla.AddCell(new Cell().Add(new Paragraph(dgvListaCliente.Rows[i].Cells[11].Value.ToString()).SetFont(fontContenido)));
+             tabla.AddCell(new Cell().Add(new Paragraph(dgvListaCliente.Rows[i].Cells[12].Value.ToString()).SetFont(fontContenido)));
+
+
+
+
+
+             documento.Add(tabla);
+             documento.Close();
+
+         }*/
     }
 }

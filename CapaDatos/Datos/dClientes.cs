@@ -9,6 +9,14 @@ using CapaDatos.Contract;
 using CapaEntidades.Entidades;
 using Oracle.DataAccess.Client;
 using System.Data;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Kernel;
+using iText.Kernel.Geom;
+using iText.Kernel.Font;
+using iText.IO.Font.Constants;
+using iText.Layout.Element;
+using iText.Layout.Properties;
 
 namespace CapaDatos.Datos
 {
@@ -236,6 +244,84 @@ namespace CapaDatos.Datos
                 conn.Close();
                 conn.Dispose();
             }
+        }
+
+        public void creaPdf()
+        {
+            DateTime fecha = DateTime.Now;
+            string fechaActual = fecha.ToString("dd-MM-yyyy");
+            //string ruta = 'C:\Users\M.ibarraO\Documents\DUOC\Aplicaciones\GeneraPDF\Listado_ClienteActual_' + fechaActual+'.pdf';
+
+            PdfWriter pdfwriter = new PdfWriter("Listado_ClienteActual_" + fechaActual + ".pdf");
+            //Crear documento
+            PdfDocument pdf = new PdfDocument(pdfwriter);
+            Document documento = new Document(pdf, PageSize.LETTER);
+
+            documento.SetMargins(60, 20, 55, 20);
+
+            PdfFont fontColumnas = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
+            PdfFont fontContenido = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
+
+            string[] columnas = { "idcliente", "nombre", "paterno", "materno", "rut", "dvs", "ubro", "direccion", "codcomuna", "ciudad", "region", "telefono", "mail" };
+            float[] tamanios = { 5, 50, 50, 50, 10, 1, 4, 100, 10, 10, 10, 50, 50 };
+
+            Table tabla = new Table(UnitValue.CreatePercentArray(tamanios));
+            tabla.SetWidth(UnitValue.CreatePercentValue(100));
+
+            foreach (string columna in columnas)
+            {
+                tabla.AddHeaderCell(new Cell().Add(new Paragraph(columna).SetFont(fontColumnas)));
+            }
+
+            /*CONSULTA SQL*/
+
+            OracleConnection conn = D_Conexion.conectar();
+            List<eCliente> listaCliente = new List<eCliente>();
+            try
+            {
+                OracleCommand command = conn.CreateCommand();
+                command.CommandText = "select idcliente,nombre,appaterno,apmaterno,rut,dverificador,descripcionrubro,direccion,nombrecomuna,NOMBRECIUDAD, NOMBREREGION,telefono,email  from cliente cl inner join comuna cm on cm.idcomuna = cl.codcomuna inner join ciudad cd on cd.idciudad = cm.idciudad inner join region rg on rg.idregion = cd.idregion inner join rubro rb on rb.idrubro = cl.idrubro";
+                OracleDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+
+                    tabla.AddCell(new Cell().Add(new Paragraph(reader["IDCLIENTE"].ToString())));
+                    tabla.AddCell(new Cell().Add(new Paragraph(reader["APPATERNO"].ToString())));
+                    tabla.AddCell(new Cell().Add(new Paragraph(reader["APMATERNO"].ToString())));
+                    tabla.AddCell(new Cell().Add(new Paragraph(reader["RUT"].ToString())));
+                    tabla.AddCell(new Cell().Add(new Paragraph(reader["DVERIFICADOR"].ToString())));
+                    tabla.AddCell(new Cell().Add(new Paragraph(reader["descripcionrubro"].ToString())));
+                    tabla.AddCell(new Cell().Add(new Paragraph(reader["NOMBRECOMUNA"].ToString())));
+                    tabla.AddCell(new Cell().Add(new Paragraph(reader["NOMBRECIUDAD"].ToString())));
+                    tabla.AddCell(new Cell().Add(new Paragraph(reader["NOMBREREGION"].ToString())));
+                    tabla.AddCell(new Cell().Add(new Paragraph(reader["TELEFONO"].ToString())));
+                    tabla.AddCell(new Cell().Add(new Paragraph(reader["EMAIL"].ToString())));
+
+                   
+
+                }
+
+                command.Dispose();
+                reader.Close();
+                reader.Dispose();
+                //Agrega en la tabla
+                documento.Add(tabla);
+                documento.Close();
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
+            }
+
+
+
         }
 
 

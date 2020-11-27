@@ -113,6 +113,10 @@
             this.btnLista = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnEliminaEliminar = new System.Windows.Forms.Button();
+            this.cLIENTEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pROFESIONALToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbInfomeCliente = new System.Windows.Forms.TabPage();
+            this.btnDescargaListadoCliente = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.grxMantenedorCliente.SuspendLayout();
@@ -171,15 +175,16 @@
             // ClienteMantenedor
             // 
             this.ClienteMantenedor.Name = "ClienteMantenedor";
-            this.ClienteMantenedor.Size = new System.Drawing.Size(186, 26);
+            this.ClienteMantenedor.Size = new System.Drawing.Size(224, 26);
             this.ClienteMantenedor.Text = "CLIENTE";
             this.ClienteMantenedor.Click += new System.EventHandler(this.ClienteMantenedor_Click);
             // 
             // ProfesionalMantenedor
             // 
             this.ProfesionalMantenedor.Name = "ProfesionalMantenedor";
-            this.ProfesionalMantenedor.Size = new System.Drawing.Size(186, 26);
+            this.ProfesionalMantenedor.Size = new System.Drawing.Size(224, 26);
             this.ProfesionalMantenedor.Text = "PROFESIONAL";
+            this.ProfesionalMantenedor.Click += new System.EventHandler(this.ProfesionalMantenedor_Click);
             // 
             // cLIENTEToolStripMenuItem1
             // 
@@ -195,11 +200,14 @@
             // 
             this.bUSCARToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
             this.bUSCARToolStripMenuItem.Name = "bUSCARToolStripMenuItem";
-            this.bUSCARToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.bUSCARToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.bUSCARToolStripMenuItem.Text = "BUSCAR";
             // 
             // InformesToolStripMenuItem
             // 
+            this.InformesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cLIENTEToolStripMenuItem,
+            this.pROFESIONALToolStripMenuItem});
             this.InformesToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
             this.InformesToolStripMenuItem.Name = "InformesToolStripMenuItem";
             this.InformesToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
@@ -222,11 +230,11 @@
             this.grxMantenedorCliente.Controls.Add(this.btnElimina);
             this.grxMantenedorCliente.Controls.Add(this.btnLista);
             this.grxMantenedorCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
-            this.grxMantenedorCliente.Location = new System.Drawing.Point(16, 47);
+            this.grxMantenedorCliente.Location = new System.Drawing.Point(28, 45);
             this.grxMantenedorCliente.Margin = new System.Windows.Forms.Padding(4);
             this.grxMantenedorCliente.Name = "grxMantenedorCliente";
             this.grxMantenedorCliente.Padding = new System.Windows.Forms.Padding(4);
-            this.grxMantenedorCliente.Size = new System.Drawing.Size(952, 553);
+            this.grxMantenedorCliente.Size = new System.Drawing.Size(952, 590);
             this.grxMantenedorCliente.TabIndex = 2;
             this.grxMantenedorCliente.TabStop = false;
             this.grxMantenedorCliente.Text = "CLIENTE";
@@ -238,11 +246,12 @@
             this.tbControlMantenedor.Controls.Add(this.tbListaCliente);
             this.tbControlMantenedor.Controls.Add(this.tbEliminaCliente);
             this.tbControlMantenedor.Controls.Add(this.tbActualizaCliente);
+            this.tbControlMantenedor.Controls.Add(this.tbInfomeCliente);
             this.tbControlMantenedor.Location = new System.Drawing.Point(8, 58);
             this.tbControlMantenedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbControlMantenedor.Name = "tbControlMantenedor";
             this.tbControlMantenedor.SelectedIndex = 0;
-            this.tbControlMantenedor.Size = new System.Drawing.Size(937, 489);
+            this.tbControlMantenedor.Size = new System.Drawing.Size(937, 526);
             this.tbControlMantenedor.TabIndex = 26;
             this.tbControlMantenedor.Visible = false;
             // 
@@ -570,13 +579,14 @@
             // 
             // tbListaCliente
             // 
+            this.tbListaCliente.Controls.Add(this.btnDescargaListadoCliente);
             this.tbListaCliente.Controls.Add(this.pnlActualiza);
             this.tbListaCliente.Controls.Add(this.dgvListaCliente);
             this.tbListaCliente.Location = new System.Drawing.Point(4, 25);
             this.tbListaCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbListaCliente.Name = "tbListaCliente";
             this.tbListaCliente.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbListaCliente.Size = new System.Drawing.Size(929, 460);
+            this.tbListaCliente.Size = new System.Drawing.Size(929, 497);
             this.tbListaCliente.TabIndex = 1;
             this.tbListaCliente.Text = "Listar";
             this.tbListaCliente.UseVisualStyleBackColor = true;
@@ -623,7 +633,7 @@
             this.btnEliminarListar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarListar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarListar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnEliminarListar.Location = new System.Drawing.Point(447, 170);
+            this.btnEliminarListar.Location = new System.Drawing.Point(456, 169);
             this.btnEliminarListar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminarListar.Name = "btnEliminarListar";
             this.btnEliminarListar.Size = new System.Drawing.Size(101, 28);
@@ -660,7 +670,7 @@
             this.btnActualiza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActualiza.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualiza.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnActualiza.Location = new System.Drawing.Point(297, 171);
+            this.btnActualiza.Location = new System.Drawing.Point(306, 170);
             this.btnActualiza.Margin = new System.Windows.Forms.Padding(4);
             this.btnActualiza.Name = "btnActualiza";
             this.btnActualiza.Size = new System.Drawing.Size(133, 26);
@@ -920,7 +930,7 @@
             this.tbEliminaCliente.Location = new System.Drawing.Point(4, 25);
             this.tbEliminaCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbEliminaCliente.Name = "tbEliminaCliente";
-            this.tbEliminaCliente.Size = new System.Drawing.Size(929, 460);
+            this.tbEliminaCliente.Size = new System.Drawing.Size(929, 515);
             this.tbEliminaCliente.TabIndex = 2;
             this.tbEliminaCliente.Text = "Eliminar";
             this.tbEliminaCliente.UseVisualStyleBackColor = true;
@@ -980,7 +990,7 @@
             this.txtNombreEliminaCliente.Enabled = false;
             this.txtNombreEliminaCliente.Location = new System.Drawing.Point(392, 21);
             this.txtNombreEliminaCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtNombreEliminaCliente.MaxLength = 9;
+            this.txtNombreEliminaCliente.MaxLength = 100;
             this.txtNombreEliminaCliente.Name = "txtNombreEliminaCliente";
             this.txtNombreEliminaCliente.Size = new System.Drawing.Size(188, 22);
             this.txtNombreEliminaCliente.TabIndex = 4;
@@ -1015,7 +1025,7 @@
             this.tbActualizaCliente.Location = new System.Drawing.Point(4, 25);
             this.tbActualizaCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbActualizaCliente.Name = "tbActualizaCliente";
-            this.tbActualizaCliente.Size = new System.Drawing.Size(929, 460);
+            this.tbActualizaCliente.Size = new System.Drawing.Size(929, 515);
             this.tbActualizaCliente.TabIndex = 3;
             this.tbActualizaCliente.Text = "Actualizar";
             this.tbActualizaCliente.UseVisualStyleBackColor = true;
@@ -1091,6 +1101,43 @@
             this.btnEliminaEliminar.Text = "ELIMINAR";
             this.btnEliminaEliminar.UseVisualStyleBackColor = false;
             this.btnEliminaEliminar.Click += new System.EventHandler(this.btnEliminaEliminar_Click);
+            // 
+            // cLIENTEToolStripMenuItem
+            // 
+            this.cLIENTEToolStripMenuItem.Name = "cLIENTEToolStripMenuItem";
+            this.cLIENTEToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.cLIENTEToolStripMenuItem.Text = "CLIENTE";
+            this.cLIENTEToolStripMenuItem.Click += new System.EventHandler(this.cLIENTEToolStripMenuItem_Click);
+            // 
+            // pROFESIONALToolStripMenuItem
+            // 
+            this.pROFESIONALToolStripMenuItem.Name = "pROFESIONALToolStripMenuItem";
+            this.pROFESIONALToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.pROFESIONALToolStripMenuItem.Text = "PROFESIONAL";
+            // 
+            // tbInfomeCliente
+            // 
+            this.tbInfomeCliente.Location = new System.Drawing.Point(4, 25);
+            this.tbInfomeCliente.Name = "tbInfomeCliente";
+            this.tbInfomeCliente.Size = new System.Drawing.Size(929, 515);
+            this.tbInfomeCliente.TabIndex = 4;
+            this.tbInfomeCliente.Text = "Informe - Cliente";
+            this.tbInfomeCliente.UseVisualStyleBackColor = true;
+            // 
+            // btnDescargaListadoCliente
+            // 
+            this.btnDescargaListadoCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
+            this.btnDescargaListadoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDescargaListadoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDescargaListadoCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnDescargaListadoCliente.Location = new System.Drawing.Point(369, 465);
+            this.btnDescargaListadoCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDescargaListadoCliente.Name = "btnDescargaListadoCliente";
+            this.btnDescargaListadoCliente.Size = new System.Drawing.Size(133, 26);
+            this.btnDescargaListadoCliente.TabIndex = 31;
+            this.btnDescargaListadoCliente.Text = "DESCARGAR";
+            this.btnDescargaListadoCliente.UseVisualStyleBackColor = false;
+            this.btnDescargaListadoCliente.Click += new System.EventHandler(this.btnDescargaListadoCliente_Click);
             // 
             // frm_Home
             // 
@@ -1213,5 +1260,9 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnEliminarListar;
         private System.Windows.Forms.Button btnEliminaEliminar;
+        private System.Windows.Forms.ToolStripMenuItem cLIENTEToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pROFESIONALToolStripMenuItem;
+        private System.Windows.Forms.TabPage tbInfomeCliente;
+        private System.Windows.Forms.Button btnDescargaListadoCliente;
     }
 }
