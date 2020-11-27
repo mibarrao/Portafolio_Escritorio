@@ -12,7 +12,7 @@ using System.Data;
 
 namespace CapaDatos.Datos
 {
-   public class dClientes 
+    public class dClientes
     {
 
         public void creaCliente(eCliente cl)
@@ -22,8 +22,8 @@ namespace CapaDatos.Datos
             {
                 OracleCommand command = new OracleCommand("SP_INSERTACLIENTE", cnn);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.Add("nom", OracleDbType.Varchar2).Value = cl.nombre ;
-                command.Parameters.Add("paterno",OracleDbType.Varchar2).Value = cl.apPaterno;
+                command.Parameters.Add("nom", OracleDbType.Varchar2).Value = cl.nombre;
+                command.Parameters.Add("paterno", OracleDbType.Varchar2).Value = cl.apPaterno;
                 command.Parameters.Add("materno", OracleDbType.Varchar2).Value = cl.apMaterno;
                 command.Parameters.Add("rut", OracleDbType.Int32).Value = cl.rut;
                 command.Parameters.Add("dverificador", OracleDbType.Varchar2).Value = cl.dvVerificador;
@@ -42,10 +42,10 @@ namespace CapaDatos.Datos
             {
                 throw new Exception(ex.Message);
             }
-            finally 
+            finally
             {
                 cnn.Close();
-                cnn.Dispose();   
+                cnn.Dispose();
             }
         }
 
@@ -86,7 +86,7 @@ namespace CapaDatos.Datos
                 OracleDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
-                { 
+                {
                     eCliente clienteGrid = new eCliente();
                     clienteGrid.idcliente = int.Parse(reader["IDCLIENTE"].ToString());
                     clienteGrid.nombre = reader["NOMBRE"].ToString();
@@ -146,7 +146,7 @@ namespace CapaDatos.Datos
                 cmd.Parameters.Add("p_codregion", OracleDbType.Int32).Value = cl.codRegion;
                 cmd.Parameters.Add("P_TELEFONO", OracleDbType.Int32).Value = cl.telefono;
                 cmd.Parameters.Add("P_email", OracleDbType.Varchar2).Value = cl.email;
-                
+
                 cmd.ExecuteNonQuery();
                 result = Convert.ToString(cmd.Parameters["P_RESULT"].Value);
                 cmd.Dispose();
@@ -155,6 +155,81 @@ namespace CapaDatos.Datos
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
+            }
+        }
+
+        public void eliminaCliente(Int32 idCliente)
+        {
+            OracleConnection cnn = D_Conexion.conectar();
+            try
+            {
+                OracleCommand command = cnn.CreateCommand();
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "SP_DELETE_CLIENTE";
+                command.Parameters.Add("IDCLIENTE", OracleDbType.Int16).Value = idCliente;
+                OracleDataReader dr = command.ExecuteReader();
+                dr.Close();
+                command.Dispose();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally {
+                cnn.Close();
+                cnn.Dispose();
+            }
+        }
+
+
+        public List<eCliente> getListaClientePorRutorName(int rut, string nombre) 
+        {
+            OracleConnection conn = D_Conexion.conectar();
+            List<eCliente> listaCliente = new List<eCliente>();
+            try
+            {
+                OracleCommand command = conn.CreateCommand();
+                command.CommandText = "select idcliente,nombre,appaterno,apmaterno,rut,dverificador,idrubro,direccion,codcomuna,codciudad,codregion,telefono,email  from cliente cl inner join comuna cm on cm.idcomuna = cl.codcomuna inner join ciudad cd on cd.idciudad = cm.idciudad inner join region rg on rg.idregion = cd.idregion where (cl.rut = :rut  or UPPER(cl.nombre|| ' '|| cl.appaterno ||' ' ||cl.apmaterno) = :nombre)";
+                command.Parameters.Add(":rut", OracleDbType.Varchar2).Value = rut;
+                command.Parameters.Add(":nombre", OracleDbType.Varchar2).Value = nombre.ToUpper();
+
+                OracleDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    eCliente clienteGrid = new eCliente();
+                    clienteGrid.idcliente = int.Parse(reader["IDCLIENTE"].ToString());
+                    clienteGrid.nombre = reader["NOMBRE"].ToString();
+                    //usuarioGrid.estado = short.Parse(reader["ISACTIVO"].ToString()) == 1 ? "Activo" : "Inactivo";
+                    clienteGrid.apPaterno = reader["APPATERNO"].ToString().ToUpper();
+                    clienteGrid.apMaterno = reader["APMATERNO"].ToString().ToUpper();
+                    clienteGrid.rut = int.Parse(reader["RUT"].ToString());
+                    clienteGrid.dvVerificador = reader["dverificador"].ToString();
+                    clienteGrid.idRubro = int.Parse(reader["IDRUBRO"].ToString());
+                    clienteGrid.direccion = reader["DIRECCION"].ToString().ToUpper();
+                    clienteGrid.codComuna = int.Parse(reader["CODCOMUNA"].ToString());
+                    clienteGrid.codCiudad = int.Parse(reader["CODCIUDAD"].ToString());
+                    clienteGrid.codRegion = int.Parse(reader["CODREGION"].ToString());
+                    clienteGrid.telefono = int.Parse(reader["TELEFONO"].ToString());
+                    clienteGrid.email = reader["EMAIL"].ToString();
+
+                    listaCliente.Add(clienteGrid);
+                }
+
+                command.Dispose();
+                reader.Close();
+                reader.Dispose();
+
+                return listaCliente;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
             }
             finally
             {

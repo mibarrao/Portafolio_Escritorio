@@ -83,5 +83,37 @@ namespace CapaDatos.Datos
 
             return list;
         }
+
+        public DataTable obtieneRubrosporId(int idRubro)
+        {
+            OracleConnection conn = D_Conexion.conectar();
+            try
+            {
+                OracleCommand command = conn.CreateCommand();
+                command.CommandText = "select idrubro, descripcionrubro from rubro where idrubro = :idRubro order by descripcionrubro";
+                command.Parameters.Add(":idRubro", OracleDbType.Varchar2).Value = idRubro;
+
+                OracleDataAdapter da = new OracleDataAdapter(command);
+                DataTable dt = new DataTable("Rubro");
+
+                da.Fill(dt);
+
+                return dt;
+            }
+
+            catch (Exception ex)
+
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+                conn.Dispose();
+            }
+
+
+
+        }
     }
 }

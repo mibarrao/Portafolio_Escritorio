@@ -490,7 +490,7 @@ namespace CapaPresentacion.Formulario
         {
             //txtNombreClienteListar.Text = dgvListaCliente.CurrentRow.Cells[e.RowIndex].Value;
             pnlActualiza.Visible = true;
-
+            try
             {
                 int i;
                 i = dgvListaCliente.SelectedCells[0].RowIndex;
@@ -501,13 +501,100 @@ namespace CapaPresentacion.Formulario
                 txtRutListar.Text = dgvListaCliente.Rows[i].Cells[4].Value.ToString();
                 txtDvListar.Text = dgvListaCliente.Rows[i].Cells[5].Value.ToString();
                 txtTelefonoClienteListar.Text = dgvListaCliente.Rows[i].Cells[11].Value.ToString();
-               // txtEmailClienteListar.Text = dgvListaCliente.Rows[i].Cells[12].Value.ToString();
-               // txtDireccionClienteListar.Text = dgvListaCliente.Rows[i].Cells[7].Value.ToString();
+                txtEmailClienteListar.Text = dgvListaCliente.Rows[i].Cells[12].Value.ToString();
+                txtDireccionClienteListar.Text = dgvListaCliente.Rows[i].Cells[7].Value.ToString();
+                //cbRubroListaCliente.ValueMember = dgvListaCliente.Rows[i].Cells[6].Value.ToString();
+
+                /*CARGA CB RUBROS*/
+                int idRubro = int.Parse(dgvListaCliente.Rows[i].Cells[6].Value.ToString());
+                dRubro rubrodao = new dRubro();
+                DataTable drubro = rubrodao.obtieneRubrosporId(idRubro);
+
+                this.cbRubroListaCliente.DataSource = drubro;
+                this.cbRubroListaCliente.DisplayMember = "descripcionrubro";
+                this.cbRubroListaCliente.ValueMember = "idrubro";
+
+
 
 
             }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
 
 
+        }
+
+        private void btnBuscaEliminaCliente_Click(object sender, EventArgs e)
+        {
+            int rutEliminaCliente;
+            string nombreEliminaCliente;
+
+            rutEliminaCliente = int.Parse(txtRutEliminaCliente.Text.ToString());
+            nombreEliminaCliente = txtNombreEliminaCliente.Text.ToString();
+
+            try
+            {
+                dClientes dcliente = new dClientes();
+
+                List<eCliente> listaCliente = new List<eCliente>();
+
+
+
+                listaCliente.AddRange(dcliente.getListaClientePorRutorName(rutEliminaCliente,nombreEliminaCliente));
+
+                listaCl = new BindingList<eCliente>(listaCliente);
+                this.dgvListaEliminar.DataSource = listaCl;
+                this.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la lista " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEliminarListar_Click(object sender, EventArgs e)
+        {
+            int i,idcliente;
+            i = dgvListaCliente.SelectedCells[0].RowIndex;
+
+            idcliente = int.Parse(dgvListaCliente.Rows[i].Cells[0].Value.ToString());
+
+            try
+            {
+                 dClientes eliminaCliente  = new dClientes();
+                eliminaCliente.eliminaCliente(idcliente);
+                MessageBox.Show("Éxito al eliminar producto.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar producto.", ex.Message);
+            }
+        }
+
+        private void dgvListaEliminar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+          
+        }
+
+        private void btnEliminaEliminar_Click(object sender, EventArgs e)
+        {
+            int i, idcliente;
+            i = dgvListaEliminar.SelectedCells[0].RowIndex;
+
+            idcliente = int.Parse(dgvListaEliminar.Rows[i].Cells[0].Value.ToString());
+
+            try
+            {
+                dClientes eliminaCliente = new dClientes();
+                eliminaCliente.eliminaCliente(idcliente);
+                MessageBox.Show("Éxito al eliminar producto.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar producto.", ex.Message);
+            }
         }
     }
 }
