@@ -339,6 +339,7 @@ namespace CapaPresentacion.Formulario
 
         private void ClienteMantenedor_Click(object sender, EventArgs e)
         {
+            grxMantenedorCliente.Text = "MANTENEDOR-CLIENTE";
             grxMantenedorCliente.Visible = true;
             btnLista.Visible = true;
             btnElimina.Visible = true;
@@ -620,7 +621,9 @@ namespace CapaPresentacion.Formulario
 
         private void ProfesionalMantenedor_Click(object sender, EventArgs e)
         {
-            grxMantenedorCliente.Text = "PROFESIONAL";
+            grxMantenedorCliente.Text = "MANTENEDOR - PROFESIONAL";
+            grxMantenedorCliente.Visible = true;
+
         }
 
         private void cLIENTEToolStripMenuItem_Click(object sender, EventArgs e)
@@ -648,6 +651,86 @@ namespace CapaPresentacion.Formulario
 
             creapdf.creaPdf();
 
+        }
+
+        private void uSUARIOToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            grxMantenedorCliente.Text = "MANTENEDOR - USUARIO";
+            grxMantenedorCliente.Visible = true;
+        }
+
+        private void pLANToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            grxMantenedorCliente.Text = "MANTENEDOR - PLAN";
+            grxMantenedorCliente.Visible = true;
+        }
+
+        private void bUSCARToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int rut;
+            string nombre;
+
+            rut = int.Parse(txtRutBuscar.Text.ToString());
+            nombre = txtNombreBusca.Text.ToString();
+
+            try
+            {
+
+                if (rdCliente.Checked == true)
+                {
+
+                    dClientes dcliente = new dClientes();
+
+                    List<eCliente> listaCliente = new List<eCliente>();
+
+
+
+                    listaCliente.AddRange(dcliente.getListaClientePorRutorName(rut, nombre));
+
+                    listaCl = new BindingList<eCliente>(listaCliente);
+                    this.dgvBuscar.DataSource = listaCl;
+                    this.Focus();
+                }
+                else if (rdProfesional.Checked == true)
+                { 
+                
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la lista " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void chxRutBuscar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chxRutBuscar.Checked == true)
+            {
+                txtRutBuscar.Enabled = true;
+                txtNombreBusca.Enabled = false;
+            }
+            else
+            {
+                txtRutBuscar.Enabled = false;
+            }
+        }
+
+        private void chxNombreBuscar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chxNombreBuscar.Checked == true)
+            {
+                txtRutBuscar.Enabled = false;
+                txtNombreBusca.Enabled = true;
+            }
+            else
+            {
+                txtNombreBusca.Enabled = false;
+            }
         }
 
         /* private void creaPdf()

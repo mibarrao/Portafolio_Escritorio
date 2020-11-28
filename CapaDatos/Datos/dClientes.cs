@@ -262,8 +262,8 @@ namespace CapaDatos.Datos
             PdfFont fontColumnas = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
             PdfFont fontContenido = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
 
-            string[] columnas = { "idcliente", "nombre", "paterno", "materno", "rut", "dvs", "ubro", "direccion", "codcomuna", "ciudad", "region", "telefono", "mail" };
-            float[] tamanios = { 5, 50, 50, 50, 10, 1, 4, 100, 10, 10, 10, 50, 50 };
+            string[] columnas = { "idcliente", "nombre", "paterno", "materno", "rut", "dvs", "rubro", "direccion", "codcomuna", "ciudad", "region", "telefono", "mail" };
+            float[] tamanios = { 5, 20, 20, 20, 10, 1, 10, 30, 15, 15, 15, 9, 30 };
 
             Table tabla = new Table(UnitValue.CreatePercentArray(tamanios));
             tabla.SetWidth(UnitValue.CreatePercentValue(100));
@@ -305,7 +305,8 @@ namespace CapaDatos.Datos
                 command.Dispose();
                 reader.Close();
                 reader.Dispose();
-                //Agrega en la tabla
+
+                //Agrega en la tablapdf
                 documento.Add(tabla);
                 documento.Close();
 
