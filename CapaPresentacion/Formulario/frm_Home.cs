@@ -51,6 +51,28 @@ namespace CapaPresentacion.Formulario
             }
         }
 
+        void esconderBotones()
+        {
+            btnIngresa.Visible = false;
+            btnLista.Visible = false;
+            btnElimina.Visible = false;
+        }
+
+        void limpiaPanelListar() {
+            pnlActualiza.Visible = false;
+            txtNombreClienteListar.Clear();
+            txtPaternoClienteListar.Clear();
+            txtMaternoClienteListar.Clear();
+            txtRutListar.Clear();
+            txtTelefonoClienteListar.Clear();
+            txtEmailClienteListar.Clear();
+            txtDireccionClienteListar.Clear();
+            cbComunaListaCliente.SelectedIndex = 0;
+            cbCiudadListaCliente.SelectedIndex = 0;
+            cbRegionListaCliente.SelectedIndex = 0;
+            cbRubroListaCliente.SelectedIndex = 0;
+        }
+
         void pCalculaDV(int rut)
         {
             if (txtRut.Text == null || txtRut.Text.Trim().Equals(string.Empty))
@@ -201,7 +223,7 @@ namespace CapaPresentacion.Formulario
 
         private void btnIngresa_Click(object sender, EventArgs e)
         {
-
+            limpiaPanelListar();
             tbControlMantenedor.Visible = true;
             if (tbIngresaCliente.Parent == null)
             {
@@ -211,7 +233,10 @@ namespace CapaPresentacion.Formulario
             tbActualizaCliente.Parent = null;
             tbEliminaCliente.Parent = null;
             tbListaCliente.Parent = null;
-         
+            tbIngresaProfesional.Parent = null;
+            tbBuscar.Parent = null;
+            tbInfomeCliente.Parent = null;
+
 
 
             /*
@@ -223,7 +248,10 @@ namespace CapaPresentacion.Formulario
 
         private void btnElimina_Click(object sender, EventArgs e)
         {
-            pnlActualiza.Visible = true;
+
+            limpiaPanelListar();
+
+
             if (tbEliminaCliente.Parent == null)
             {
                 // 0 es el index por la primera pestana
@@ -233,6 +261,9 @@ namespace CapaPresentacion.Formulario
             tbActualizaCliente.Parent = null;
             tbIngresaCliente.Parent = null;
             tbListaCliente.Parent = null;
+            tbIngresaProfesional.Parent = null;
+            tbBuscar.Parent = null;
+            tbInfomeCliente.Parent = null;
 
         }
 
@@ -278,6 +309,10 @@ namespace CapaPresentacion.Formulario
             tbActualizaCliente.Parent = null;
             tbIngresaCliente.Parent = null;
             tbEliminaCliente.Parent = null;
+            tbIngresaProfesional.Parent = null;
+            tbBuscar.Parent = null;
+            tbInfomeCliente.Parent = null; 
+
 
             try {
                 dClientes dcliente = new dClientes();
@@ -328,12 +363,29 @@ namespace CapaPresentacion.Formulario
 
         private void cLIENTEToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            pMantenedorFalse();
+            esconderBotones();
+            limpiaPanelListar();
+
+            grxMantenedorCliente.Text = "BUSCAR - CLIENTE / PROFESIONAL";
+            grxMantenedorCliente.Visible = true;
+
+
+            tbControlMantenedor.Visible = true;
+            if (tbControlMantenedor.Parent == null)
+            {
+                // 0 es el index por la primera pestana
+                tbControlMantenedor.TabPages.Insert(0, tbInfomeCliente);
+            }
+            tbIngresaCliente.Parent = null;
+            tbActualizaCliente.Parent = null;
+            tbEliminaCliente.Parent = null;
+            tbListaCliente.Parent = null;
         }
 
         private void InformesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            pMantenedorFalse();
+            esconderBotones();
+            limpiaPanelListar();
 
         }
 
@@ -628,20 +680,8 @@ namespace CapaPresentacion.Formulario
 
         private void cLIENTEToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            grxMantenedorCliente.Text = "MANTENEDOR - CLIENTE";
-            grxMantenedorCliente.Visible = true;
-
-
-            tbControlMantenedor.Visible = true;
-            if (tbControlMantenedor.Parent == null)
-            {
-                // 0 es el index por la primera pestana
-                tbControlMantenedor.TabPages.Insert(0, tbInfomeCliente);
-            }
-            tbIngresaCliente.Parent = null;
-            tbActualizaCliente.Parent = null;
-            tbEliminaCliente.Parent = null;
-            tbListaCliente.Parent = null;
+            esconderBotones();
+            limpiaPanelListar();
 
         }
 
@@ -674,8 +714,23 @@ namespace CapaPresentacion.Formulario
             int rut;
             string nombre;
 
-            rut = int.Parse(txtRutBuscar.Text.ToString());
-            nombre = txtNombreBusca.Text.ToString();
+
+
+            if (!string.IsNullOrEmpty(txtRutBuscar.Text))
+            {
+                rut = int.Parse(txtRutBuscar.Text.ToString());
+                nombre = " ";
+            }
+            else
+            {
+                nombre = txtNombreBusca.Text.ToString();
+                rut = '0';
+
+            }
+
+
+
+
 
             try
             {
@@ -688,6 +743,7 @@ namespace CapaPresentacion.Formulario
                     List<eCliente> listaCliente = new List<eCliente>();
 
 
+                   
 
                     listaCliente.AddRange(dcliente.getListaClientePorRutorName(rut, nombre));
 
@@ -696,7 +752,7 @@ namespace CapaPresentacion.Formulario
                     this.Focus();
                 }
                 else if (rdProfesional.Checked == true)
-                { 
+                {  nombre = txtNombreBusca.Text.ToString();
                 
                 }
 
@@ -713,6 +769,7 @@ namespace CapaPresentacion.Formulario
             {
                 txtRutBuscar.Enabled = true;
                 txtNombreBusca.Enabled = false;
+                chxNombreBuscar.Checked = false;
             }
             else
             {
@@ -726,11 +783,18 @@ namespace CapaPresentacion.Formulario
             {
                 txtRutBuscar.Enabled = false;
                 txtNombreBusca.Enabled = true;
+                chxRutBuscar.Checked = false;
             }
             else
             {
                 txtNombreBusca.Enabled = false;
             }
+        }
+
+        private void pROFESIONALToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            esconderBotones();
+            limpiaPanelListar();
         }
 
         /* private void creaPdf()

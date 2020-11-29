@@ -202,7 +202,16 @@ namespace CapaDatos.Datos
             try
             {
                 OracleCommand command = conn.CreateCommand();
-                command.CommandText = "select idcliente,nombre,appaterno,apmaterno,rut,dverificador,idrubro,direccion,codcomuna,codciudad,codregion,telefono,email  from cliente cl inner join comuna cm on cm.idcomuna = cl.codcomuna inner join ciudad cd on cd.idciudad = cm.idciudad inner join region rg on rg.idregion = cd.idregion where (cl.rut = :rut  or UPPER(cl.nombre|| ' '|| cl.appaterno ||' ' ||cl.apmaterno) = :nombre)";
+
+                StringBuilder queryCliente = new StringBuilder();
+
+                //queryCliente.Append("select idcliente,nombre,appaterno,apmaterno,rut,dverificador,idrubro,direccion,codcomuna,codciudad,codregion,telefono,email  from cliente cl inner join comuna cm on cm.idcomuna = cl.codcomuna inner join ciudad cd on cd.idciudad = cm.idciudad inner join region rg on rg.idregion = cd.idregion where (cl.rut = :rut  or UPPER(cl.nombre|| ' '|| cl.appaterno ||' ' ||cl.apmaterno) like ");
+                //queryCliente.Append(nombre);
+                //queryCliente.Append(" )");
+                command.CommandText = "select idcliente,nombre,appaterno,apmaterno,rut,dverificador,idrubro,direccion,codcomuna,codciudad,codregion,telefono,email  from cliente cl inner join comuna cm on cm.idcomuna = cl.codcomuna inner join ciudad cd on cd.idciudad = cm.idciudad inner join region rg on rg.idregion = cd.idregion where (cl.rut = :rut  or UPPER(cl.nombre|| ' '|| cl.appaterno ||' ' ||cl.apmaterno) = :nombre )  ";
+                //command.CommandText = queryCliente.ToString();
+
+
                 command.Parameters.Add(":rut", OracleDbType.Varchar2).Value = rut;
                 command.Parameters.Add(":nombre", OracleDbType.Varchar2).Value = nombre.ToUpper();
 

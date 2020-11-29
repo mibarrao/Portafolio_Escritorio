@@ -39,7 +39,6 @@
             this.uSUARIOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pLANToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cLIENTEToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.bUSCARToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InformesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cLIENTEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pROFESIONALToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -193,48 +192,38 @@
             // ClienteMantenedor
             // 
             this.ClienteMantenedor.Name = "ClienteMantenedor";
-            this.ClienteMantenedor.Size = new System.Drawing.Size(186, 26);
+            this.ClienteMantenedor.Size = new System.Drawing.Size(224, 26);
             this.ClienteMantenedor.Text = "CLIENTE";
             this.ClienteMantenedor.Click += new System.EventHandler(this.ClienteMantenedor_Click);
             // 
             // ProfesionalMantenedor
             // 
             this.ProfesionalMantenedor.Name = "ProfesionalMantenedor";
-            this.ProfesionalMantenedor.Size = new System.Drawing.Size(186, 26);
+            this.ProfesionalMantenedor.Size = new System.Drawing.Size(224, 26);
             this.ProfesionalMantenedor.Text = "PROFESIONAL";
             this.ProfesionalMantenedor.Click += new System.EventHandler(this.ProfesionalMantenedor_Click);
             // 
             // uSUARIOToolStripMenuItem
             // 
             this.uSUARIOToolStripMenuItem.Name = "uSUARIOToolStripMenuItem";
-            this.uSUARIOToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
+            this.uSUARIOToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.uSUARIOToolStripMenuItem.Text = "USUARIO";
             this.uSUARIOToolStripMenuItem.Click += new System.EventHandler(this.uSUARIOToolStripMenuItem_Click);
             // 
             // pLANToolStripMenuItem
             // 
             this.pLANToolStripMenuItem.Name = "pLANToolStripMenuItem";
-            this.pLANToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
+            this.pLANToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.pLANToolStripMenuItem.Text = "PLAN";
             this.pLANToolStripMenuItem.Click += new System.EventHandler(this.pLANToolStripMenuItem_Click);
             // 
             // cLIENTEToolStripMenuItem1
             // 
-            this.cLIENTEToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bUSCARToolStripMenuItem});
             this.cLIENTEToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
             this.cLIENTEToolStripMenuItem1.Name = "cLIENTEToolStripMenuItem1";
             this.cLIENTEToolStripMenuItem1.Size = new System.Drawing.Size(78, 24);
-            this.cLIENTEToolStripMenuItem1.Text = "CLIENTE";
+            this.cLIENTEToolStripMenuItem1.Text = "BUSCAR";
             this.cLIENTEToolStripMenuItem1.Click += new System.EventHandler(this.cLIENTEToolStripMenuItem1_Click);
-            // 
-            // bUSCARToolStripMenuItem
-            // 
-            this.bUSCARToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
-            this.bUSCARToolStripMenuItem.Name = "bUSCARToolStripMenuItem";
-            this.bUSCARToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
-            this.bUSCARToolStripMenuItem.Text = "BUSCAR";
-            this.bUSCARToolStripMenuItem.Click += new System.EventHandler(this.bUSCARToolStripMenuItem_Click);
             // 
             // InformesToolStripMenuItem
             // 
@@ -250,15 +239,16 @@
             // cLIENTEToolStripMenuItem
             // 
             this.cLIENTEToolStripMenuItem.Name = "cLIENTEToolStripMenuItem";
-            this.cLIENTEToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
+            this.cLIENTEToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.cLIENTEToolStripMenuItem.Text = "CLIENTE";
             this.cLIENTEToolStripMenuItem.Click += new System.EventHandler(this.cLIENTEToolStripMenuItem_Click);
             // 
             // pROFESIONALToolStripMenuItem
             // 
             this.pROFESIONALToolStripMenuItem.Name = "pROFESIONALToolStripMenuItem";
-            this.pROFESIONALToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
+            this.pROFESIONALToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.pROFESIONALToolStripMenuItem.Text = "PROFESIONAL";
+            this.pROFESIONALToolStripMenuItem.Click += new System.EventHandler(this.pROFESIONALToolStripMenuItem_Click);
             // 
             // sALIRToolStripMenuItem
             // 
@@ -1349,7 +1339,6 @@
         private System.Windows.Forms.ToolStripMenuItem ClienteMantenedor;
         private System.Windows.Forms.ToolStripMenuItem ProfesionalMantenedor;
         private System.Windows.Forms.ToolStripMenuItem cLIENTEToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem bUSCARToolStripMenuItem;
         private System.Windows.Forms.GroupBox grxMantenedorCliente;
         private System.Windows.Forms.Button btnLista;
         private System.Windows.Forms.Button btnActualiza;
