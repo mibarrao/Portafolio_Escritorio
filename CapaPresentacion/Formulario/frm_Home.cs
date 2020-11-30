@@ -54,6 +54,27 @@ namespace CapaPresentacion.Formulario
             }
         }
 
+        void listaCliente(int rut, string nombre) {
+            try
+            {
+                dClientes dcliente = new dClientes();
+
+                List<eCliente> listaCliente = new List<eCliente>();
+
+
+
+                listaCliente.AddRange(dcliente.getListaClientePorRutorName(rut,nombre));
+
+                listaCl = new BindingList<eCliente>(listaCliente);
+                this.dgvListaEliminar.DataSource = listaCl;
+                this.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la lista " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         void esconderBotones()
         {
             btnIngresa.Visible = false;
@@ -484,7 +505,11 @@ namespace CapaPresentacion.Formulario
 
 
                 dcliente.editaCliente(cl);
+                listaCliente(cl.rut, cl.nombre + " " + cl.apPaterno + " " + cl.apMaterno);
                 MessageBox.Show("Cliente editado exitosamente.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                
 
 
             }
@@ -821,9 +846,23 @@ namespace CapaPresentacion.Formulario
             int rutEliminaCliente;
             string nombreEliminaCliente;
 
-            rutEliminaCliente = int.Parse(txtRutEliminaCliente.Text.ToString());
-            nombreEliminaCliente = txtNombreEliminaCliente.Text.ToString();
 
+
+            //rutEliminaCliente = int.Parse(txtRutEliminaCliente.Text.ToString());
+            //nombreEliminaCliente = txtNombreEliminaCliente.Text.ToString();
+
+
+            if (!string.IsNullOrEmpty(txtRutEliminaCliente.Text))
+            {
+                rutEliminaCliente = int.Parse(txtRutEliminaCliente.Text.ToString());
+                nombreEliminaCliente = " ";
+            }
+            else
+            {
+                nombreEliminaCliente = txtNombreBusca.Text.ToString();
+                rutEliminaCliente = '0';
+
+            }
 
             try
             {
@@ -881,6 +920,26 @@ namespace CapaPresentacion.Formulario
                 dClientes eliminaCliente = new dClientes();
                 eliminaCliente.eliminaCliente(idcliente);
                 MessageBox.Show("Éxito al eliminar producto.");
+                listaCliente(int.Parse(txtRutActualiza.Text.Trim()),txtNombreActualiza.Text.Trim()+" "+ txtPaternoActualiza.Text.Trim() + " " + txtMaternoActualiza.Text.Trim());
+
+                //try
+                //{
+                //    dClientes dcliente = new dClientes();
+
+                //    List<eCliente> listaCliente = new List<eCliente>();
+
+
+
+                //    listaCliente.AddRange(dcliente.getListaClientePorRutorName(int.Parse(txtRutEliminaCliente.Text.Trim()), txtNombreEliminaCliente.Text.Trim())) ;
+
+                //    listaCl = new BindingList<eCliente>(listaCliente);
+                //    this.dgvListaEliminar.DataSource = listaCl;
+                //    this.Focus();
+                //}
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show("Error al cargar la lista " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
             }
             catch (Exception ex)
             {
@@ -1077,6 +1136,11 @@ namespace CapaPresentacion.Formulario
                 }
             }
     }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
 
         /* private void creaPdf()
          {

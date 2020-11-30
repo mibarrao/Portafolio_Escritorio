@@ -83,7 +83,7 @@ namespace CapaDatos.Datos
             }
         }
 
-        public List<eCliente> getListaCliente()
+            public List<eCliente> getListaCliente()
         {
             OracleConnection conn = D_Conexion.conectar();
             List<eCliente> listaCliente = new List<eCliente>();
@@ -213,7 +213,7 @@ namespace CapaDatos.Datos
                 //command.CommandText = queryCliente.ToString();
 
 
-                command.Parameters.Add(":rut", OracleDbType.Varchar2).Value = rut;
+                command.Parameters.Add(":rut", OracleDbType.Int32).Value = rut;
                 command.Parameters.Add(":nombre", OracleDbType.Varchar2).Value = nombre.ToUpper();
 
                 OracleDataReader reader = command.ExecuteReader();
@@ -272,8 +272,8 @@ namespace CapaDatos.Datos
             PdfFont fontColumnas = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
             PdfFont fontContenido = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
 
-            string[] columnas = { "idcliente", "nombre", "paterno", "materno", "rut", "dvs", "rubro", "direccion", "codcomuna", "ciudad", "region", "telefono", "mail" };
-            float[] tamanios = { 5, 20, 20, 20, 10, 1, 10, 30, 15, 15, 15, 9, 30 };
+            string[] columnas = {  "nombre", "paterno", "materno", "rut", "dv", "rubro", "direccion", "codcomuna", "telefono", "mail" };
+            float[] tamanios = {20, 20, 20, 10, 1, 10, 30, 15, 15, 15, 9, 30 };
 
             Table tabla = new Table(UnitValue.CreatePercentArray(tamanios));
             tabla.SetWidth(UnitValue.CreatePercentValue(100));
@@ -290,21 +290,21 @@ namespace CapaDatos.Datos
             try
             {
                 OracleCommand command = conn.CreateCommand();
-                command.CommandText = "select idcliente,nombre,appaterno,apmaterno,rut,dverificador,descripcionrubro,direccion,nombrecomuna,NOMBRECIUDAD, NOMBREREGION,telefono,email  from cliente cl inner join comuna cm on cm.idcomuna = cl.codcomuna inner join ciudad cd on cd.idciudad = cm.idciudad inner join region rg on rg.idregion = cd.idregion inner join rubro rb on rb.idrubro = cl.idrubro";
+                command.CommandText = "select nombre,appaterno,apmaterno,rut,dverificador,descripcionrubro,direccion,nombrecomuna,telefono,email  from cliente cl inner join comuna cm on cm.idcomuna = cl.codcomuna inner join ciudad cd on cd.idciudad = cm.idciudad inner join region rg on rg.idregion = cd.idregion inner join rubro rb on rb.idrubro = cl.idrubro";
                 OracleDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
 
-                    tabla.AddCell(new Cell().Add(new Paragraph(reader["IDCLIENTE"].ToString())));
+                   // tabla.AddCell(new Cell().Add(new Paragraph(reader["IDCLIENTE"].ToString())));
                     tabla.AddCell(new Cell().Add(new Paragraph(reader["APPATERNO"].ToString())));
                     tabla.AddCell(new Cell().Add(new Paragraph(reader["APMATERNO"].ToString())));
                     tabla.AddCell(new Cell().Add(new Paragraph(reader["RUT"].ToString())));
                     tabla.AddCell(new Cell().Add(new Paragraph(reader["DVERIFICADOR"].ToString())));
                     tabla.AddCell(new Cell().Add(new Paragraph(reader["descripcionrubro"].ToString())));
                     tabla.AddCell(new Cell().Add(new Paragraph(reader["NOMBRECOMUNA"].ToString())));
-                    tabla.AddCell(new Cell().Add(new Paragraph(reader["NOMBRECIUDAD"].ToString())));
-                    tabla.AddCell(new Cell().Add(new Paragraph(reader["NOMBREREGION"].ToString())));
+                    //tabla.AddCell(new Cell().Add(new Paragraph(reader["NOMBRECIUDAD"].ToString())));
+                    //tabla.AddCell(new Cell().Add(new Paragraph(reader["NOMBREREGION"].ToString())));
                     tabla.AddCell(new Cell().Add(new Paragraph(reader["TELEFONO"].ToString())));
                     tabla.AddCell(new Cell().Add(new Paragraph(reader["EMAIL"].ToString())));
 
@@ -335,6 +335,8 @@ namespace CapaDatos.Datos
 
         }
 
+
+      
 
     }
 
