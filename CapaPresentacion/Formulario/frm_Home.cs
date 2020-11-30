@@ -19,6 +19,11 @@ using iText.Kernel.Font;
 using iText.IO.Font.Constants;
 using iText.Layout.Element;
 using iText.Layout.Properties;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Globalization;
 
 namespace CapaPresentacion.Formulario
 {
@@ -59,6 +64,7 @@ namespace CapaPresentacion.Formulario
         }
 
         void limpiaPanelListar() {
+           /*PANEL LISTAR*/
             pnlActualiza.Visible = false;
             txtNombreClienteListar.Clear();
             txtPaternoClienteListar.Clear();
@@ -67,10 +73,115 @@ namespace CapaPresentacion.Formulario
             txtTelefonoClienteListar.Clear();
             txtEmailClienteListar.Clear();
             txtDireccionClienteListar.Clear();
-            cbComunaListaCliente.SelectedIndex = 0;
-            cbCiudadListaCliente.SelectedIndex = 0;
-            cbRegionListaCliente.SelectedIndex = 0;
-            cbRubroListaCliente.SelectedIndex = 0;
+            cbComunaListaCliente.SelectedIndex = -1;
+            cbCiudadListaCliente.SelectedIndex = -1;
+            cbRegionListaCliente.SelectedIndex = -1;
+            cbRubroListaCliente.SelectedIndex = -1;
+            /*PANEL ACTUALIZAR*/
+
+            pnlActualizar.Visible = false;
+
+
+        }
+
+
+
+
+
+        bool IsValidEmail(string strIn)
+        {
+            bool invalid = false;
+            if (String.IsNullOrEmpty(strIn))
+                return false;
+
+            // Use IdnMapping class to convert Unicode domain names.
+            try
+            {
+                strIn = Regex.Replace(strIn, @"(@)(.+)$", DomainMapper,
+                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+
+            if (invalid)
+                return false;
+
+            // Return true if strIn is in valid e-mail format.
+            try
+            {
+                return Regex.IsMatch(strIn,
+                      @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                      @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+                      RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
+
+        string DomainMapper(Match match)
+        {
+            bool invalid = false;
+            // IdnMapping class with default property values.
+            IdnMapping idn = new IdnMapping();
+
+            string domainName = match.Groups[2].Value;
+            try
+            {
+                domainName = idn.GetAscii(domainName);
+            }
+            catch (ArgumentException)
+            {
+                invalid = true;
+            }
+            return match.Groups[1].Value + domainName;
+        }
+
+        bool ValidaRut(string rut, string dv)
+        {
+            rut = rut.Replace(".", "").ToUpper();
+            Regex expresion = new Regex("^([0-9]+-[0-9K])$");
+            if (!expresion.IsMatch(rut))
+            {
+                return false;
+            }
+            char[] charCorte = { '-' };
+            string[] rutTemp = rut.Split(charCorte);
+            if (dv != Digito(int.Parse(rutTemp[0])))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        string Digito(int rut)
+        {
+            int suma = 0;
+            int multiplicador = 1;
+            while (rut != 0)
+            {
+                multiplicador++;
+                if (multiplicador == 8)
+                    multiplicador = 2;
+                suma += (rut % 10) * multiplicador;
+                rut = rut / 10;
+            }
+            suma = 11 - (suma % 11);
+            if (suma == 11)
+            {
+                return "0";
+            }
+            else if (suma == 10)
+            {
+                return "K";
+            }
+            else
+            {
+                return suma.ToString();
+            }
         }
 
         void pCalculaDV(int rut)
@@ -236,14 +347,6 @@ namespace CapaPresentacion.Formulario
             tbIngresaProfesional.Parent = null;
             tbBuscar.Parent = null;
             tbInfomeCliente.Parent = null;
-
-
-
-            /*
-              Cuerpo.TabPages.Add(_Cuerpo_FinNC)
-                    Cuerpo.TabPages.Item(0).Parent = Nothing
-                    guardarPantallaAnterior(1)
-             */
         }
 
         private void btnElimina_Click(object sender, EventArgs e)
@@ -275,30 +378,30 @@ namespace CapaPresentacion.Formulario
             dRubro rubrodao = new dRubro();
             DataTable drubro = rubrodao.obtieneRubros();
 
-            this.cbRubro.DataSource = drubro;
-            this.cbRubro.DisplayMember = "descripcionrubro";
-            this.cbRubro.ValueMember = "idrubro";
+            this.cbRubroListaCliente.DataSource = drubro;
+            this.cbRubroListaCliente.DisplayMember = "descripcionrubro";
+            this.cbRubroListaCliente.ValueMember = "idrubro";
 
 
             /*CARGA CB COMUNA*/
             dComuna comunadao = new dComuna();
             DataTable dcomuna = comunadao.obtieneComunacb();
 
-            this.cbComuna.DataSource = dcomuna;
-            this.cbComuna.DisplayMember = "nombrecomuna";
-            this.cbComuna.ValueMember = "idcomuna";
+            this.cbComunaListaCliente.DataSource = dcomuna;
+            this.cbComunaListaCliente.DisplayMember = "nombrecomuna";
+            this.cbComunaListaCliente.ValueMember = "idcomuna";
 
             /*CARGA CB CIUDAD*/
 
-            this.cbCiudad.DataSource = dcomuna;
-            this.cbCiudad.DisplayMember = "nombreciudad";
-            this.cbCiudad.ValueMember = "idciudad";
+            this.cbCiudadListaCliente.DataSource = dcomuna;
+            this.cbCiudadListaCliente.DisplayMember = "nombreciudad";
+            this.cbCiudadListaCliente.ValueMember = "idciudad";
 
             /*CARGA CB REGION*/
 
-            this.cbRegion.DataSource = dcomuna;
-            this.cbRegion.DisplayMember = "nombreregion";
-            this.cbRegion.ValueMember = "idregion";
+            this.cbRegionListaCliente.DataSource = dcomuna;
+            this.cbRegionListaCliente.DisplayMember = "nombreregion";
+            this.cbRegionListaCliente.ValueMember = "idregion";
 
             if (tbListaCliente.Parent == null)
             {
@@ -356,30 +459,31 @@ namespace CapaPresentacion.Formulario
 
         private void MantenedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+            tbControlMantenedor.Visible = false;
           
 
         }
 
         private void cLIENTEToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            esconderBotones();
-            limpiaPanelListar();
 
-            grxMantenedorCliente.Text = "BUSCAR - CLIENTE / PROFESIONAL";
             grxMantenedorCliente.Visible = true;
+            grxMantenedorCliente.Text = "BUSCAR";
+            esconderBotones();
 
-
+            limpiaPanelListar();
             tbControlMantenedor.Visible = true;
-            if (tbControlMantenedor.Parent == null)
+            if (tbBuscar.Parent == null)
             {
                 // 0 es el index por la primera pestana
-                tbControlMantenedor.TabPages.Insert(0, tbInfomeCliente);
+                tbControlMantenedor.TabPages.Insert(0, tbBuscar);
             }
-            tbIngresaCliente.Parent = null;
             tbActualizaCliente.Parent = null;
             tbEliminaCliente.Parent = null;
             tbListaCliente.Parent = null;
+            tbIngresaProfesional.Parent = null;
+            tbInfomeCliente.Parent = null;
+            tbIngresaCliente.Parent = null;
         }
 
         private void InformesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -396,6 +500,9 @@ namespace CapaPresentacion.Formulario
             btnLista.Visible = true;
             btnElimina.Visible = true;
             btnIngresa.Visible = true;
+            rbCliente.Checked = true;
+            rbProfesional.Checked = false;
+               
 
 
             /*CARGA CB RUBROS*/
@@ -438,6 +545,54 @@ namespace CapaPresentacion.Formulario
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+
+            pCalculaDV(int.Parse(txtRut.Text));
+
+            /*VALIDACION DATOS*/
+            if (String.IsNullOrEmpty(txtNombreCliente.Text) || txtNombreCliente.TextLength < 3)
+            {
+                MessageBox.Show("Error: El Nombre es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNombreCliente.Focus();
+                return;
+            }
+            else if (String.IsNullOrEmpty(txtRut.Text) || txtRut.TextLength < 7)
+            {
+                MessageBox.Show("Error: El Rut es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtRut.Focus();
+                return;
+            }
+
+            else if (String.IsNullOrEmpty(txtTelefonoCliente.Text) || txtTelefonoCliente.TextLength < 9)
+            {
+                MessageBox.Show("Error: El telefono es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTelefonoCliente.Focus();
+                return;
+            }
+            else if (String.IsNullOrEmpty(txtMailCliente.Text) )
+            {
+                MessageBox.Show("Error: El Mail es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtMailCliente.Focus();
+                return;
+            }
+            else if (String.IsNullOrEmpty(txtDireccionCliente.Text))
+            {
+                MessageBox.Show("Error: La dirección es obligatoria.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtDireccionCliente.Focus();
+                return;
+            }
+            //else if (!ValidaRut(txtRut.Text.Trim(),txtDV.Text.Trim()))
+            //{
+            //    MessageBox.Show("Error: El Rut ingresado no es válido. Debe ser sin puntos y con guión.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    txtRut.Focus();
+            //    return;
+            //}
+            else if (!IsValidEmail(txtMailCliente.Text.Trim()))
+            {
+                MessageBox.Show("Error: El Email ingresado no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtMailCliente.Focus();
+                return;
+            }
+
             try
             {
 
@@ -445,7 +600,7 @@ namespace CapaPresentacion.Formulario
                 /*CREAR CLIENTE*/
                 eCliente cl = new eCliente();
                 dClientes dcliente = new dClientes();
-                pCalculaDV(int.Parse(txtRut.Text));
+               
 
 
                 cl.nombre = txtNombreCliente.Text.Trim();
@@ -490,7 +645,7 @@ namespace CapaPresentacion.Formulario
         }
             catch (Exception ex)
             { 
-                MessageBox.Show("Error: Ha ocurrido un error al crear el usuario. "+ex,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: Ha ocurrido un error al crear el usuario. "+ex.Message,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 }
@@ -608,6 +763,7 @@ namespace CapaPresentacion.Formulario
             rutEliminaCliente = int.Parse(txtRutEliminaCliente.Text.ToString());
             nombreEliminaCliente = txtNombreEliminaCliente.Text.ToString();
 
+
             try
             {
                 dClientes dcliente = new dClientes();
@@ -675,6 +831,8 @@ namespace CapaPresentacion.Formulario
         {
             grxMantenedorCliente.Text = "MANTENEDOR - PROFESIONAL";
             grxMantenedorCliente.Visible = true;
+            rbCliente.Checked = false;
+            rbProfesional.Checked = true;
 
         }
 
@@ -796,6 +954,68 @@ namespace CapaPresentacion.Formulario
             esconderBotones();
             limpiaPanelListar();
         }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+
+            tbEliminaCliente.Text = "Acualizar";
+            pnlActualizar.Visible = true;
+
+            if (tbEliminaCliente.Parent == null)
+            {
+                // 0 es el index por la primera pestana
+                tbControlMantenedor.TabPages.Insert(0, tbEliminaCliente);
+            }
+            tbControlMantenedor.Visible = true;
+            tbActualizaCliente.Parent = null;
+            tbIngresaCliente.Parent = null;
+            tbListaCliente.Parent = null;
+            tbIngresaProfesional.Parent = null;
+            tbBuscar.Parent = null;
+            tbInfomeCliente.Parent = null;
+
+
+            
+            }
+
+        private void dgvListaEliminar_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (rbCliente.Checked == true)
+            {
+                try
+                {
+                    int i;
+                    i = dgvListaEliminar.SelectedCells[0].RowIndex;
+                    txtNombreActualiza.Text = dgvListaEliminar.Rows[i].Cells[1].Value.ToString();
+                    txtPaternoActualiza.Text = dgvListaEliminar.Rows[i].Cells[2].Value.ToString();
+                    txtMaternoActualiza.Text = dgvListaEliminar.Rows[i].Cells[3].Value.ToString();
+
+                    txtRutActualiza.Text = dgvListaEliminar.Rows[i].Cells[4].Value.ToString();
+                    txtDvActualiza.Text = dgvListaEliminar.Rows[i].Cells[5].Value.ToString();
+                    txtTelefonoActualiza.Text = dgvListaEliminar.Rows[i].Cells[11].Value.ToString();
+                    txtMailActualiza.Text = dgvListaEliminar.Rows[i].Cells[12].Value.ToString();
+                    txtDireccionActualiza.Text = dgvListaEliminar.Rows[i].Cells[7].Value.ToString();
+                    //cbRubroListaCliente.ValueMember = dgvListaCliente.Rows[i].Cells[6].Value.ToString();
+
+                    /*CARGA CB RUBROS*/
+                    int idRubro = int.Parse(dgvListaEliminar.Rows[i].Cells[6].Value.ToString());
+                    dRubro rubrodao = new dRubro();
+                    DataTable drubro = rubrodao.obtieneRubrosporId(idRubro);
+
+                    this.cbRubroActualiza.DataSource = drubro;
+                    this.cbRubroActualiza.DisplayMember = "descripcionrubro";
+                    this.cbRubroActualiza.ValueMember = "idrubro";
+
+
+
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(" se produjo un error: " + ex.Message);
+                }
+            }
+    }
 
         /* private void creaPdf()
          {

@@ -129,6 +129,36 @@
             this.btnElimina = new System.Windows.Forms.Button();
             this.btnLista = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.pnlActualizar = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.cbRegionActualiza = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.cbCiudadActualiza = new System.Windows.Forms.ComboBox();
+            this.cbComunaActualiza = new System.Windows.Forms.ComboBox();
+            this.cbRubroActualiza = new System.Windows.Forms.ComboBox();
+            this.txtMailActualiza = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtDireccionActualiza = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtTelefonoActualiza = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtDvActualiza = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtRutActualiza = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtMaternoActualiza = new System.Windows.Forms.TextBox();
+            this.txtPaternoActualiza = new System.Windows.Forms.TextBox();
+            this.txtNombreActualiza = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.rbCliente = new System.Windows.Forms.RadioButton();
+            this.rbProfesional = new System.Windows.Forms.RadioButton();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.grxMantenedorCliente.SuspendLayout();
@@ -145,6 +175,7 @@
             this.tbBuscar.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscar)).BeginInit();
+            this.pnlActualizar.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -261,6 +292,9 @@
             // grxMantenedorCliente
             // 
             this.grxMantenedorCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.grxMantenedorCliente.Controls.Add(this.rbProfesional);
+            this.grxMantenedorCliente.Controls.Add(this.rbCliente);
+            this.grxMantenedorCliente.Controls.Add(this.btnActualizar);
             this.grxMantenedorCliente.Controls.Add(this.tbControlMantenedor);
             this.grxMantenedorCliente.Controls.Add(this.btnIngresa);
             this.grxMantenedorCliente.Controls.Add(this.btnElimina);
@@ -995,7 +1029,7 @@
             this.btnEliminaEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminaEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminaEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnEliminaEliminar.Location = new System.Drawing.Point(404, 390);
+            this.btnEliminaEliminar.Location = new System.Drawing.Point(404, 423);
             this.btnEliminaEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminaEliminar.Name = "btnEliminaEliminar";
             this.btnEliminaEliminar.Size = new System.Drawing.Size(101, 28);
@@ -1006,34 +1040,36 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pnlActualizar);
             this.panel1.Controls.Add(this.dgvListaEliminar);
             this.panel1.Controls.Add(this.chxbNombreEliminaCliente);
             this.panel1.Controls.Add(this.chxbRutEliminaCliente);
             this.panel1.Controls.Add(this.txtNombreEliminaCliente);
             this.panel1.Controls.Add(this.btnBuscaEliminaCliente);
             this.panel1.Controls.Add(this.txtRutEliminaCliente);
-            this.panel1.Location = new System.Drawing.Point(32, 25);
+            this.panel1.Location = new System.Drawing.Point(19, 13);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(875, 345);
+            this.panel1.Size = new System.Drawing.Size(907, 404);
             this.panel1.TabIndex = 1;
             // 
             // dgvListaEliminar
             // 
             this.dgvListaEliminar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListaEliminar.Location = new System.Drawing.Point(18, 71);
+            this.dgvListaEliminar.Location = new System.Drawing.Point(30, 40);
             this.dgvListaEliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvListaEliminar.Name = "dgvListaEliminar";
             this.dgvListaEliminar.RowHeadersWidth = 51;
             this.dgvListaEliminar.RowTemplate.Height = 24;
-            this.dgvListaEliminar.Size = new System.Drawing.Size(836, 254);
+            this.dgvListaEliminar.Size = new System.Drawing.Size(836, 116);
             this.dgvListaEliminar.TabIndex = 7;
+            this.dgvListaEliminar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaEliminar_CellClick);
             this.dgvListaEliminar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaEliminar_CellContentClick);
             // 
             // chxbNombreEliminaCliente
             // 
             this.chxbNombreEliminaCliente.AutoSize = true;
-            this.chxbNombreEliminaCliente.Location = new System.Drawing.Point(307, 23);
+            this.chxbNombreEliminaCliente.Location = new System.Drawing.Point(359, 3);
             this.chxbNombreEliminaCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chxbNombreEliminaCliente.Name = "chxbNombreEliminaCliente";
             this.chxbNombreEliminaCliente.Size = new System.Drawing.Size(80, 21);
@@ -1045,7 +1081,7 @@
             // chxbRutEliminaCliente
             // 
             this.chxbRutEliminaCliente.AutoSize = true;
-            this.chxbRutEliminaCliente.Location = new System.Drawing.Point(35, 25);
+            this.chxbRutEliminaCliente.Location = new System.Drawing.Point(87, 3);
             this.chxbRutEliminaCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chxbRutEliminaCliente.Name = "chxbRutEliminaCliente";
             this.chxbRutEliminaCliente.Size = new System.Drawing.Size(52, 21);
@@ -1057,7 +1093,7 @@
             // txtNombreEliminaCliente
             // 
             this.txtNombreEliminaCliente.Enabled = false;
-            this.txtNombreEliminaCliente.Location = new System.Drawing.Point(392, 21);
+            this.txtNombreEliminaCliente.Location = new System.Drawing.Point(444, 2);
             this.txtNombreEliminaCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNombreEliminaCliente.MaxLength = 100;
             this.txtNombreEliminaCliente.Name = "txtNombreEliminaCliente";
@@ -1069,7 +1105,7 @@
             this.btnBuscaEliminaCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
             this.btnBuscaEliminaCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscaEliminaCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
-            this.btnBuscaEliminaCliente.Location = new System.Drawing.Point(679, 23);
+            this.btnBuscaEliminaCliente.Location = new System.Drawing.Point(731, 2);
             this.btnBuscaEliminaCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBuscaEliminaCliente.Name = "btnBuscaEliminaCliente";
             this.btnBuscaEliminaCliente.Size = new System.Drawing.Size(99, 23);
@@ -1081,7 +1117,7 @@
             // txtRutEliminaCliente
             // 
             this.txtRutEliminaCliente.Enabled = false;
-            this.txtRutEliminaCliente.Location = new System.Drawing.Point(92, 23);
+            this.txtRutEliminaCliente.Location = new System.Drawing.Point(144, 2);
             this.txtRutEliminaCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtRutEliminaCliente.MaxLength = 9;
             this.txtRutEliminaCliente.Name = "txtRutEliminaCliente";
@@ -1288,6 +1324,363 @@
             this.btnLista.UseVisualStyleBackColor = false;
             this.btnLista.Click += new System.EventHandler(this.btnLista_Click);
             // 
+            // btnActualizar
+            // 
+            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.btnActualizar.Location = new System.Drawing.Point(584, 24);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(119, 28);
+            this.btnActualizar.TabIndex = 27;
+            this.btnActualizar.Text = "ACTUALIZAR";
+            this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // pnlActualizar
+            // 
+            this.pnlActualizar.Controls.Add(this.button1);
+            this.pnlActualizar.Controls.Add(this.cbRegionActualiza);
+            this.pnlActualizar.Controls.Add(this.label13);
+            this.pnlActualizar.Controls.Add(this.button2);
+            this.pnlActualizar.Controls.Add(this.cbCiudadActualiza);
+            this.pnlActualizar.Controls.Add(this.cbComunaActualiza);
+            this.pnlActualizar.Controls.Add(this.cbRubroActualiza);
+            this.pnlActualizar.Controls.Add(this.txtMailActualiza);
+            this.pnlActualizar.Controls.Add(this.label14);
+            this.pnlActualizar.Controls.Add(this.label15);
+            this.pnlActualizar.Controls.Add(this.label16);
+            this.pnlActualizar.Controls.Add(this.txtDireccionActualiza);
+            this.pnlActualizar.Controls.Add(this.label17);
+            this.pnlActualizar.Controls.Add(this.txtTelefonoActualiza);
+            this.pnlActualizar.Controls.Add(this.label18);
+            this.pnlActualizar.Controls.Add(this.label19);
+            this.pnlActualizar.Controls.Add(this.txtDvActualiza);
+            this.pnlActualizar.Controls.Add(this.label20);
+            this.pnlActualizar.Controls.Add(this.txtRutActualiza);
+            this.pnlActualizar.Controls.Add(this.label21);
+            this.pnlActualizar.Controls.Add(this.txtMaternoActualiza);
+            this.pnlActualizar.Controls.Add(this.txtPaternoActualiza);
+            this.pnlActualizar.Controls.Add(this.txtNombreActualiza);
+            this.pnlActualizar.Controls.Add(this.label22);
+            this.pnlActualizar.Controls.Add(this.label23);
+            this.pnlActualizar.Controls.Add(this.label24);
+            this.pnlActualizar.Location = new System.Drawing.Point(7, 182);
+            this.pnlActualizar.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlActualizar.Name = "pnlActualizar";
+            this.pnlActualizar.Size = new System.Drawing.Size(894, 215);
+            this.pnlActualizar.TabIndex = 27;
+            this.pnlActualizar.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.button1.Location = new System.Drawing.Point(456, 169);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(101, 28);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "ELIMINAR";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // cbRegionActualiza
+            // 
+            this.cbRegionActualiza.Enabled = false;
+            this.cbRegionActualiza.FormattingEnabled = true;
+            this.cbRegionActualiza.Location = new System.Drawing.Point(615, 122);
+            this.cbRegionActualiza.Margin = new System.Windows.Forms.Padding(4);
+            this.cbRegionActualiza.Name = "cbRegionActualiza";
+            this.cbRegionActualiza.Size = new System.Drawing.Size(160, 24);
+            this.cbRegionActualiza.TabIndex = 29;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Enabled = false;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(544, 123);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(55, 18);
+            this.label13.TabIndex = 28;
+            this.label13.Text = "Region";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(35)))), ((int)(((byte)(60)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(242)))), ((int)(((byte)(244)))));
+            this.button2.Location = new System.Drawing.Point(306, 170);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(133, 26);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "ACTUALIZAR";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // cbCiudadActualiza
+            // 
+            this.cbCiudadActualiza.Enabled = false;
+            this.cbCiudadActualiza.FormattingEnabled = true;
+            this.cbCiudadActualiza.Location = new System.Drawing.Point(376, 122);
+            this.cbCiudadActualiza.Margin = new System.Windows.Forms.Padding(4);
+            this.cbCiudadActualiza.Name = "cbCiudadActualiza";
+            this.cbCiudadActualiza.Size = new System.Drawing.Size(160, 24);
+            this.cbCiudadActualiza.TabIndex = 27;
+            // 
+            // cbComunaActualiza
+            // 
+            this.cbComunaActualiza.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbComunaActualiza.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbComunaActualiza.FormattingEnabled = true;
+            this.cbComunaActualiza.Location = new System.Drawing.Point(145, 122);
+            this.cbComunaActualiza.Margin = new System.Windows.Forms.Padding(4);
+            this.cbComunaActualiza.Name = "cbComunaActualiza";
+            this.cbComunaActualiza.Size = new System.Drawing.Size(160, 24);
+            this.cbComunaActualiza.TabIndex = 26;
+            // 
+            // cbRubroActualiza
+            // 
+            this.cbRubroActualiza.FormattingEnabled = true;
+            this.cbRubroActualiza.Location = new System.Drawing.Point(421, 48);
+            this.cbRubroActualiza.Margin = new System.Windows.Forms.Padding(4);
+            this.cbRubroActualiza.Name = "cbRubroActualiza";
+            this.cbRubroActualiza.Size = new System.Drawing.Size(160, 24);
+            this.cbRubroActualiza.TabIndex = 25;
+            // 
+            // txtMailActualiza
+            // 
+            this.txtMailActualiza.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMailActualiza.Location = new System.Drawing.Point(60, 89);
+            this.txtMailActualiza.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMailActualiza.Name = "txtMailActualiza";
+            this.txtMailActualiza.Size = new System.Drawing.Size(370, 22);
+            this.txtMailActualiza.TabIndex = 23;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(20, 91);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(35, 18);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "Mail";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Enabled = false;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(305, 123);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(54, 18);
+            this.label15.TabIndex = 21;
+            this.label15.Text = "Ciudad";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(51, 123);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(65, 18);
+            this.label16.TabIndex = 20;
+            this.label16.Text = "Comuna";
+            // 
+            // txtDireccionActualiza
+            // 
+            this.txtDireccionActualiza.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDireccionActualiza.Location = new System.Drawing.Point(529, 90);
+            this.txtDireccionActualiza.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDireccionActualiza.Name = "txtDireccionActualiza";
+            this.txtDireccionActualiza.Size = new System.Drawing.Size(357, 22);
+            this.txtDireccionActualiza.TabIndex = 19;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(443, 87);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(71, 18);
+            this.label17.TabIndex = 18;
+            this.label17.Text = "Direccion";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // txtTelefonoActualiza
+            // 
+            this.txtTelefonoActualiza.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTelefonoActualiza.Location = new System.Drawing.Point(685, 57);
+            this.txtTelefonoActualiza.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTelefonoActualiza.MaxLength = 9;
+            this.txtTelefonoActualiza.Name = "txtTelefonoActualiza";
+            this.txtTelefonoActualiza.Size = new System.Drawing.Size(149, 22);
+            this.txtTelefonoActualiza.TabIndex = 17;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(604, 54);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(66, 18);
+            this.label18.TabIndex = 16;
+            this.label18.Text = "Telefono";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(359, 50);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(49, 18);
+            this.label19.TabIndex = 14;
+            this.label19.Text = "Rubro";
+            // 
+            // txtDvActualiza
+            // 
+            this.txtDvActualiza.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDvActualiza.Enabled = false;
+            this.txtDvActualiza.Location = new System.Drawing.Point(292, 48);
+            this.txtDvActualiza.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDvActualiza.Name = "txtDvActualiza";
+            this.txtDvActualiza.Size = new System.Drawing.Size(46, 22);
+            this.txtDvActualiza.TabIndex = 13;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(260, 50);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(28, 18);
+            this.label20.TabIndex = 12;
+            this.label20.Text = "DV";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // txtRutActualiza
+            // 
+            this.txtRutActualiza.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRutActualiza.Location = new System.Drawing.Point(103, 47);
+            this.txtRutActualiza.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRutActualiza.MaxLength = 8;
+            this.txtRutActualiza.Name = "txtRutActualiza";
+            this.txtRutActualiza.Size = new System.Drawing.Size(149, 22);
+            this.txtRutActualiza.TabIndex = 11;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(23, 49);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(31, 18);
+            this.label21.TabIndex = 10;
+            this.label21.Text = "Rut";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // txtMaternoActualiza
+            // 
+            this.txtMaternoActualiza.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMaternoActualiza.Location = new System.Drawing.Point(651, 7);
+            this.txtMaternoActualiza.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMaternoActualiza.Name = "txtMaternoActualiza";
+            this.txtMaternoActualiza.Size = new System.Drawing.Size(159, 22);
+            this.txtMaternoActualiza.TabIndex = 9;
+            // 
+            // txtPaternoActualiza
+            // 
+            this.txtPaternoActualiza.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPaternoActualiza.Location = new System.Drawing.Point(396, 7);
+            this.txtPaternoActualiza.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPaternoActualiza.Name = "txtPaternoActualiza";
+            this.txtPaternoActualiza.Size = new System.Drawing.Size(159, 22);
+            this.txtPaternoActualiza.TabIndex = 8;
+            // 
+            // txtNombreActualiza
+            // 
+            this.txtNombreActualiza.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNombreActualiza.Location = new System.Drawing.Point(99, 7);
+            this.txtNombreActualiza.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNombreActualiza.Name = "txtNombreActualiza";
+            this.txtNombreActualiza.Size = new System.Drawing.Size(214, 22);
+            this.txtNombreActualiza.TabIndex = 7;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(572, 9);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(63, 18);
+            this.label22.TabIndex = 6;
+            this.label22.Text = "Materno";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(321, 10);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(60, 18);
+            this.label23.TabIndex = 5;
+            this.label23.Text = "Paterno";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(21, 9);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(62, 18);
+            this.label24.TabIndex = 4;
+            this.label24.Text = "Nombre";
+            // 
+            // rbCliente
+            // 
+            this.rbCliente.AutoSize = true;
+            this.rbCliente.Location = new System.Drawing.Point(55, 22);
+            this.rbCliente.Name = "rbCliente";
+            this.rbCliente.Size = new System.Drawing.Size(72, 21);
+            this.rbCliente.TabIndex = 28;
+            this.rbCliente.TabStop = true;
+            this.rbCliente.Text = "Cliente";
+            this.rbCliente.UseVisualStyleBackColor = true;
+            this.rbCliente.Visible = false;
+            // 
+            // rbProfesional
+            // 
+            this.rbProfesional.AutoSize = true;
+            this.rbProfesional.Location = new System.Drawing.Point(741, 28);
+            this.rbProfesional.Name = "rbProfesional";
+            this.rbProfesional.Size = new System.Drawing.Size(100, 21);
+            this.rbProfesional.TabIndex = 29;
+            this.rbProfesional.TabStop = true;
+            this.rbProfesional.Text = "Profesional";
+            this.rbProfesional.UseVisualStyleBackColor = true;
+            this.rbProfesional.Visible = false;
+            // 
             // frm_Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1306,6 +1699,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.grxMantenedorCliente.ResumeLayout(false);
+            this.grxMantenedorCliente.PerformLayout();
             this.tbControlMantenedor.ResumeLayout(false);
             this.tbIngresaCliente.ResumeLayout(false);
             this.pnlIngresar.ResumeLayout(false);
@@ -1323,6 +1717,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscar)).EndInit();
+            this.pnlActualizar.ResumeLayout(false);
+            this.pnlActualizar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1429,5 +1825,35 @@
         private System.Windows.Forms.TextBox txtRutBuscar;
         private System.Windows.Forms.RadioButton rdProfesional;
         private System.Windows.Forms.RadioButton rdCliente;
+        private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.Panel pnlActualizar;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox cbRegionActualiza;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox cbCiudadActualiza;
+        private System.Windows.Forms.ComboBox cbComunaActualiza;
+        private System.Windows.Forms.ComboBox cbRubroActualiza;
+        private System.Windows.Forms.TextBox txtMailActualiza;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtDireccionActualiza;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtTelefonoActualiza;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox txtDvActualiza;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtRutActualiza;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtMaternoActualiza;
+        private System.Windows.Forms.TextBox txtPaternoActualiza;
+        private System.Windows.Forms.TextBox txtNombreActualiza;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.RadioButton rbCliente;
+        private System.Windows.Forms.RadioButton rbProfesional;
     }
 }

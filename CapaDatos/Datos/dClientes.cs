@@ -203,7 +203,7 @@ namespace CapaDatos.Datos
             {
                 OracleCommand command = conn.CreateCommand();
 
-                StringBuilder queryCliente = new StringBuilder();
+                //StringBuilder queryCliente = new StringBuilder();
 
                 //queryCliente.Append("select idcliente,nombre,appaterno,apmaterno,rut,dverificador,idrubro,direccion,codcomuna,codciudad,codregion,telefono,email  from cliente cl inner join comuna cm on cm.idcomuna = cl.codcomuna inner join ciudad cd on cd.idciudad = cm.idciudad inner join region rg on rg.idregion = cd.idregion where (cl.rut = :rut  or UPPER(cl.nombre|| ' '|| cl.appaterno ||' ' ||cl.apmaterno) like ");
                 //queryCliente.Append(nombre);
