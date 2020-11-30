@@ -478,7 +478,7 @@ namespace CapaPresentacion.Formulario
                 cl.direccion = txtDireccionClienteListar.Text.Trim();
                 cl.codComuna = int.Parse(cbComunaListaCliente.SelectedValue.ToString());
                 cl.codCiudad = int.Parse(cbCiudadListaCliente.SelectedValue.ToString());
-                cl.codRegion = int.Parse(cbComunaListaCliente.SelectedValue.ToString());
+                cl.codRegion = int.Parse(cbRegionListaCliente.SelectedValue.ToString());
                 cl.telefono = int.Parse(txtTelefonoClienteListar.Text.Trim());
                 cl.email = txtEmailClienteListar.Text.Trim();
 
