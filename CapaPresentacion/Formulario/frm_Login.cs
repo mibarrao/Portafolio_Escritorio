@@ -37,8 +37,8 @@ namespace CapaPresentacion.Formulario
         void p_logueo()
         {
             DataTable dt = new DataTable();
-            objetoEUsuario.usuario = txtUsuario.Text;
-            objetoEUsuario.clave = txtClave.Text;
+            objetoEUsuario.usuario =  txtUsuario.Text.ToLower().Trim();
+            objetoEUsuario.clave = txtClave.Text.Trim();
 
             dt = objetoNUsuario.N_Usuario(objetoEUsuario);
 

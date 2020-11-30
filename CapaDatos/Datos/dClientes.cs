@@ -131,10 +131,11 @@ namespace CapaDatos.Datos
             }
         }
 
+
+
         public void editaCliente(eCliente cl)
         {
             OracleConnection conn = D_Conexion.conectar();
-            string result = string.Empty;
 
             try
             {
@@ -156,13 +157,13 @@ namespace CapaDatos.Datos
                 cmd.Parameters.Add("P_email", OracleDbType.Varchar2).Value = cl.email;
 
                 cmd.ExecuteNonQuery();
-                result = Convert.ToString(cmd.Parameters["P_RESULT"].Value);
+                //result = Convert.ToString(cmd.Parameters["P_RESULT"].Value);
                 cmd.Dispose();
 
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception("Se produjo un error en sp_update_cliente" + ex.Message);
             }
             finally
             {

@@ -20,9 +20,7 @@ using iText.IO.Font.Constants;
 using iText.Layout.Element;
 using iText.Layout.Properties;
 using System.Security.Cryptography;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Globalization;
 
 namespace CapaPresentacion.Formulario
@@ -320,6 +318,7 @@ namespace CapaPresentacion.Formulario
         }
 
 
+
         /*******************************************************************/
         private void sALIRToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -373,35 +372,35 @@ namespace CapaPresentacion.Formulario
         private void btnLista_Click(object sender, EventArgs e)
         {
 
-            //PRECARGAR REGION, COMUNA,CIUDAD Y REGION
-            /*CARGA CB RUBROS*/
-            dRubro rubrodao = new dRubro();
-            DataTable drubro = rubrodao.obtieneRubros();
+            ////PRECARGAR REGION, COMUNA,CIUDAD Y REGION
+            ///*CARGA CB RUBROS*/
+            //dRubro rubrodao = new dRubro();
+            //DataTable drubro = rubrodao.obtieneRubros();
 
-            this.cbRubroListaCliente.DataSource = drubro;
-            this.cbRubroListaCliente.DisplayMember = "descripcionrubro";
-            this.cbRubroListaCliente.ValueMember = "idrubro";
+            //this.cbRubroListaCliente.DataSource = drubro;
+            //this.cbRubroListaCliente.DisplayMember = "descripcionrubro";
+            //this.cbRubroListaCliente.ValueMember = "idrubro";
 
 
-            /*CARGA CB COMUNA*/
-            dComuna comunadao = new dComuna();
-            DataTable dcomuna = comunadao.obtieneComunacb();
+            ///*CARGA CB COMUNA*/
+            //dComuna comunadao = new dComuna();
+            //DataTable dcomuna = comunadao.obtieneComunacb();
 
-            this.cbComunaListaCliente.DataSource = dcomuna;
-            this.cbComunaListaCliente.DisplayMember = "nombrecomuna";
-            this.cbComunaListaCliente.ValueMember = "idcomuna";
+            //this.cbComunaListaCliente.DataSource = dcomuna;
+            //this.cbComunaListaCliente.DisplayMember = "nombrecomuna";
+            //this.cbComunaListaCliente.ValueMember = "idcomuna";
 
-            /*CARGA CB CIUDAD*/
+            ///*CARGA CB CIUDAD*/
 
-            this.cbCiudadListaCliente.DataSource = dcomuna;
-            this.cbCiudadListaCliente.DisplayMember = "nombreciudad";
-            this.cbCiudadListaCliente.ValueMember = "idciudad";
+            //this.cbCiudadListaCliente.DataSource = dcomuna;
+            //this.cbCiudadListaCliente.DisplayMember = "nombreciudad";
+            //this.cbCiudadListaCliente.ValueMember = "idciudad";
 
-            /*CARGA CB REGION*/
+            ///*CARGA CB REGION*/
 
-            this.cbRegionListaCliente.DataSource = dcomuna;
-            this.cbRegionListaCliente.DisplayMember = "nombreregion";
-            this.cbRegionListaCliente.ValueMember = "idregion";
+            //this.cbRegionListaCliente.DataSource = dcomuna;
+            //this.cbRegionListaCliente.DisplayMember = "nombreregion";
+            //this.cbRegionListaCliente.ValueMember = "idregion";
 
             if (tbListaCliente.Parent == null)
             {
@@ -437,23 +436,57 @@ namespace CapaPresentacion.Formulario
 
         private void btnActualiza_Click(object sender, EventArgs e)
         {
-            if (tbActualizaCliente.Parent == null)
+            if (tbListaCliente.Parent == null)
             {
                 // 3 es el index por la cuarta pestana
-                tbControlMantenedor.TabPages.Insert(0, tbActualizaCliente);
+                tbControlMantenedor.TabPages.Insert(0, tbListaCliente);
             }
             tbControlMantenedor.Visible = true;
-            tbListaCliente.Parent = null;
+            tbActualizaCliente.Parent = null;
             tbIngresaCliente.Parent = null;
             tbEliminaCliente.Parent = null;
+            tbInfomeCliente.Parent = null;
+            tbIngresaProfesional.Parent = null;
+            tbBuscar.Parent = null;
+
 
             if (this.dgvListaCliente.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Error: Debe seleccionar un usuario para Editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-            { 
-                
+            {
+                //eCliente e_cliente = new eCliente();
+                //e_cliente.nombre = txtNombreClienteListar.Text.Trim();
+                //e_cliente.apPaterno = txtPaternoClienteListar.Text.Trim();
+                //e_cliente.apMaterno = txtMaternoClienteListar.Text.Trim();
+                //e_cliente.rut = int.Parse(txtRutListar.Text.Trim());
+
+
+                /*CREAR CLIENTE*/
+                eCliente cl = new eCliente();
+                dClientes dcliente = new dClientes();
+
+
+                cl.idcliente = int.Parse(txtIdCliente.Text.Trim());
+                cl.nombre = txtNombreClienteListar.Text.Trim();
+                cl.apPaterno = txtPaternoClienteListar.Text.Trim();
+                cl.apMaterno = txtMaternoClienteListar.Text.Trim();
+                cl.rut = int.Parse(txtRutListar.Text.Trim());
+                cl.dvVerificador = txtDvListar.Text.Trim();
+                cl.idRubro = int.Parse(cbRubroListaCliente.SelectedValue.ToString());
+                cl.direccion = txtDireccionClienteListar.Text.Trim();
+                cl.codComuna = int.Parse(cbComunaListaCliente.SelectedValue.ToString());
+                cl.codCiudad = int.Parse(cbCiudadListaCliente.SelectedValue.ToString());
+                cl.codRegion = int.Parse(cbComunaListaCliente.SelectedValue.ToString());
+                cl.telefono = int.Parse(txtTelefonoClienteListar.Text.Trim());
+                cl.email = txtEmailClienteListar.Text.Trim();
+
+
+                dcliente.editaCliente(cl);
+                MessageBox.Show("Cliente editado exitosamente.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
             }
         }
 
@@ -723,6 +756,7 @@ namespace CapaPresentacion.Formulario
             {
                 int i;
                 i = dgvListaCliente.SelectedCells[0].RowIndex;
+                txtIdCliente.Text = dgvListaCliente.Rows[i].Cells[0].Value.ToString();
                 txtNombreClienteListar.Text = dgvListaCliente.Rows[i].Cells[1].Value.ToString();
                 txtPaternoClienteListar.Text = dgvListaCliente.Rows[i].Cells[2].Value.ToString();
                 txtMaternoClienteListar.Text = dgvListaCliente.Rows[i].Cells[3].Value.ToString();
@@ -734,14 +768,41 @@ namespace CapaPresentacion.Formulario
                 txtDireccionClienteListar.Text = dgvListaCliente.Rows[i].Cells[7].Value.ToString();
                 //cbRubroListaCliente.ValueMember = dgvListaCliente.Rows[i].Cells[6].Value.ToString();
 
-                /*CARGA CB RUBROS*/
-                int idRubro = int.Parse(dgvListaCliente.Rows[i].Cells[6].Value.ToString());
+
+                /*PRECARGA RUBROS*/
                 dRubro rubrodao = new dRubro();
-                DataTable drubro = rubrodao.obtieneRubrosporId(idRubro);
+                DataTable drubro = rubrodao.obtieneRubros();
 
                 this.cbRubroListaCliente.DataSource = drubro;
                 this.cbRubroListaCliente.DisplayMember = "descripcionrubro";
                 this.cbRubroListaCliente.ValueMember = "idrubro";
+                cbRubroListaCliente.SelectedValue = int.Parse(dgvListaCliente.Rows[i].Cells[6].Value.ToString());
+
+                /*CARGA CB COMUNA*/
+                dComuna comunadao = new dComuna();
+                DataTable dcomuna = comunadao.obtieneComunacb();
+
+                this.cbComunaListaCliente.DataSource = dcomuna;
+                this.cbComunaListaCliente.DisplayMember = "nombrecomuna";
+                this.cbComunaListaCliente.ValueMember = "idcomuna";
+                cbComunaListaCliente.SelectedValue = int.Parse(dgvListaCliente.Rows[i].Cells[8].Value.ToString());
+
+
+                /*CARGA CB CIUDAD*/
+
+                this.cbCiudadListaCliente.DataSource = dcomuna;
+                this.cbCiudadListaCliente.DisplayMember = "nombreciudad";
+                this.cbCiudadListaCliente.ValueMember = "idciudad";
+                cbCiudadListaCliente.SelectedValue = int.Parse(dgvListaCliente.Rows[i].Cells[9].Value.ToString());
+
+
+                /*CARGA CB REGION*/
+
+                this.cbRegionListaCliente.DataSource = dcomuna;
+                this.cbRegionListaCliente.DisplayMember = "nombreregion";
+                this.cbRegionListaCliente.ValueMember = "idregion";
+                cbRegionListaCliente.SelectedValue = int.Parse(dgvListaCliente.Rows[i].Cells[10].Value.ToString());
+
 
 
 

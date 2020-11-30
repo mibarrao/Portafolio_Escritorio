@@ -159,6 +159,8 @@
             this.label24 = new System.Windows.Forms.Label();
             this.rbCliente = new System.Windows.Forms.RadioButton();
             this.rbProfesional = new System.Windows.Forms.RadioButton();
+            this.txtIdCliente = new System.Windows.Forms.TextBox();
+            this.lblIdCliente = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.grxMantenedorCliente.SuspendLayout();
@@ -680,6 +682,8 @@
             // 
             // pnlActualiza
             // 
+            this.pnlActualiza.Controls.Add(this.lblIdCliente);
+            this.pnlActualiza.Controls.Add(this.txtIdCliente);
             this.pnlActualiza.Controls.Add(this.btnEliminarListar);
             this.pnlActualiza.Controls.Add(this.cbRegionListaCliente);
             this.pnlActualiza.Controls.Add(this.label1);
@@ -727,6 +731,7 @@
             this.btnEliminarListar.TabIndex = 30;
             this.btnEliminarListar.Text = "ELIMINAR";
             this.btnEliminarListar.UseVisualStyleBackColor = false;
+            this.btnEliminarListar.Visible = false;
             this.btnEliminarListar.Click += new System.EventHandler(this.btnEliminarListar_Click);
             // 
             // cbRegionListaCliente
@@ -1681,6 +1686,28 @@
             this.rbProfesional.UseVisualStyleBackColor = true;
             this.rbProfesional.Visible = false;
             // 
+            // txtIdCliente
+            // 
+            this.txtIdCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtIdCliente.Location = new System.Drawing.Point(130, 169);
+            this.txtIdCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIdCliente.Name = "txtIdCliente";
+            this.txtIdCliente.Size = new System.Drawing.Size(168, 22);
+            this.txtIdCliente.TabIndex = 31;
+            this.txtIdCliente.Visible = false;
+            // 
+            // lblIdCliente
+            // 
+            this.lblIdCliente.AutoSize = true;
+            this.lblIdCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIdCliente.Location = new System.Drawing.Point(33, 169);
+            this.lblIdCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIdCliente.Name = "lblIdCliente";
+            this.lblIdCliente.Size = new System.Drawing.Size(68, 18);
+            this.lblIdCliente.TabIndex = 32;
+            this.lblIdCliente.Text = "Id Cliente";
+            this.lblIdCliente.Visible = false;
+            // 
             // frm_Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1855,5 +1882,7 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.RadioButton rbCliente;
         private System.Windows.Forms.RadioButton rbProfesional;
+        private System.Windows.Forms.TextBox txtIdCliente;
+        private System.Windows.Forms.Label lblIdCliente;
     }
 }
