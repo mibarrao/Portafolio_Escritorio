@@ -275,7 +275,7 @@ namespace CapaDatos.Datos
             PdfFont fontContenido = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
 
             string[] columnas = {  "nombre", "paterno", "materno", "rut", "dv", "rubro", "direccion", "codcomuna", "telefono", "mail" };
-            float[] tamanios = {20, 20, 20, 10, 1, 10, 30, 15, 15, 15, 9, 30 };
+            float[] tamanios = {10, 10, 10, 10, 1, 10, 20, 10, 9, 20 };
 
             Table tabla = new Table(UnitValue.CreatePercentArray(tamanios));
             tabla.SetWidth(UnitValue.CreatePercentValue(100));
@@ -305,6 +305,7 @@ namespace CapaDatos.Datos
                     tabla.AddCell(new Cell().Add(new Paragraph(reader["RUT"].ToString())));
                     tabla.AddCell(new Cell().Add(new Paragraph(reader["DVERIFICADOR"].ToString())));
                     tabla.AddCell(new Cell().Add(new Paragraph(reader["descripcionrubro"].ToString())));
+                    tabla.AddCell(new Cell().Add(new Paragraph(reader["DIRECCION"].ToString())));
                     tabla.AddCell(new Cell().Add(new Paragraph(reader["NOMBRECOMUNA"].ToString())));
                     //tabla.AddCell(new Cell().Add(new Paragraph(reader["NOMBRECIUDAD"].ToString())));
                     //tabla.AddCell(new Cell().Add(new Paragraph(reader["NOMBREREGION"].ToString())));
@@ -322,6 +323,8 @@ namespace CapaDatos.Datos
                 //Agrega en la tablapdf
                 documento.Add(tabla);
                 documento.Close();
+
+                
 
             }
             catch (Exception e)

@@ -22,6 +22,8 @@ using iText.Layout.Properties;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using System.Net.Mail;
+
 
 namespace CapaPresentacion.Formulario
 {
@@ -329,6 +331,46 @@ namespace CapaPresentacion.Formulario
             catch (Exception ex)
             {
                 MessageBox.Show("No se ha podido realizar el envío de correo "+ ex.Message);
+            }
+        }
+        void pEnviaCorreoArchivo(string para)
+        {
+            System.Net.Mail.MailMessage mmsg = new System.Net.Mail.MailMessage();
+
+            DateTime fecha = DateTime.Now;
+            string fechaActual = fecha.ToString("dd-MM-yyyy");
+            string RutaArchivo = "C:\\Listado_ClienteActual_" + fechaActual + ".pdf";
+            //string ruta = 'C:\Users\M.ibarraO\Documents\DUOC\Aplicaciones\GeneraPDF\Listado_ClienteActual_' + fechaActual+'.pdf';
+
+            Attachment data = new Attachment(RutaArchivo);
+
+
+
+
+            mmsg.To.Add(para);
+            mmsg.Subject = "DESCARGA ARCHIVO PIMA SOLUCIONES";
+            mmsg.SubjectEncoding = System.Text.Encoding.UTF8;
+
+            mmsg.Body = "Estimado/a, \n Se adjuntan el archivo descargado. \n \n Atte. \n Pima Soluciones.";
+            mmsg.Attachments.Add (data);
+            mmsg.BodyEncoding = System.Text.Encoding.UTF8;
+            mmsg.IsBodyHtml = false;
+
+            mmsg.From = new System.Net.Mail.MailAddress("contacto@lumostintapapel.cl");
+            System.Net.Mail.SmtpClient cliente = new System.Net.Mail.SmtpClient();
+            cliente.Credentials = new System.Net.NetworkCredential("contacto@lumostintapapel.cl", "Slytherin250");
+            cliente.Port = 26;
+            cliente.EnableSsl = false;
+            cliente.Host = "mail.lumostintapapel.cl"; //mail.dominio.com
+
+            try
+            {
+                cliente.Send(mmsg);
+                MessageBox.Show("Se ha realizado el envío de correo correctamente");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se ha podido realizar el envío de correo " + ex.Message);
             }
         }
 
@@ -963,13 +1005,19 @@ namespace CapaPresentacion.Formulario
             esconderBotones();
             limpiaPanelListar();
 
-        }
+        } 
 
-        private void btnDescargaListadoCliente_Click(object sender, EventArgs e)
+        private void btnDescargaListadoCliente_Click(object sender, EventArgs e) 
         {
+            string para = Microsoft.VisualBasic.Interaction.InputBox("Favor ingrese correo a enviar: ", "Peticion correo");
+            
             dClientes creapdf = new dClientes();
 
             creapdf.creaPdf();
+
+            pEnviaCorreoArchivo(para);
+
+            MessageBox.Show("Se ha generado exitosamente el archivo.");
 
         }
 
