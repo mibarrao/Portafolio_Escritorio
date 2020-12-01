@@ -505,7 +505,9 @@ namespace CapaPresentacion.Formulario
 
 
                 dcliente.editaCliente(cl);
+                
                 listaCliente(cl.rut, cl.nombre + " " + cl.apPaterno + " " + cl.apMaterno);
+
                 MessageBox.Show("Cliente editado exitosamente.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 

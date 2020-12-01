@@ -256,13 +256,15 @@ namespace CapaDatos.Datos
             }
         }
 
+            
+
         public void creaPdf()
         {
             DateTime fecha = DateTime.Now;
             string fechaActual = fecha.ToString("dd-MM-yyyy");
             //string ruta = 'C:\Users\M.ibarraO\Documents\DUOC\Aplicaciones\GeneraPDF\Listado_ClienteActual_' + fechaActual+'.pdf';
 
-            PdfWriter pdfwriter = new PdfWriter("Listado_ClienteActual_" + fechaActual + ".pdf");
+            PdfWriter pdfwriter = new PdfWriter("C:\\Listado_ClienteActual_" + fechaActual + ".pdf");
             //Crear documento
             PdfDocument pdf = new PdfDocument(pdfwriter);
             Document documento = new Document(pdf, PageSize.LETTER);
@@ -296,7 +298,8 @@ namespace CapaDatos.Datos
                 while (reader.Read())
                 {
 
-                   // tabla.AddCell(new Cell().Add(new Paragraph(reader["IDCLIENTE"].ToString())));
+                    // tabla.AddCell(new Cell().Add(new Paragraph(reader["IDCLIENTE"].ToString())));
+                    tabla.AddCell(new Cell().Add(new Paragraph(reader["NOMBRE"].ToString())));
                     tabla.AddCell(new Cell().Add(new Paragraph(reader["APPATERNO"].ToString())));
                     tabla.AddCell(new Cell().Add(new Paragraph(reader["APMATERNO"].ToString())));
                     tabla.AddCell(new Cell().Add(new Paragraph(reader["RUT"].ToString())));
